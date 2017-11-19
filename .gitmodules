@@ -1,0 +1,33 @@
+[submodule "plugged/ale"]
+	path = plugged/ale
+	url = git://github.com/w0rp/ale
+[submodule "plugged/ack.vim"]
+	path = plugged/ack.vim
+	url = git://github.com/mileszs/ack.vim
+[submodule "plugged/filemaker.vim"]
+	path = plugged/filemaker.vim
+	url = git://github.com/chivalry/filemaker.vim
+[submodule "plugged/fzf"]
+	path = plugged/fzf
+	url = git://github.com/junegunn/fzf
+[submodule "plugged/fzf.vim"]
+	path = plugged/fzf.vim
+	url = git://github.com/junegunn/fzf.vim
+[submodule "plugged/indentLine"]
+	path = plugged/indentLine
+	url = git://github.com/Yggdroot/indentLine
+[submodule "plugged/php.vim"]
+	path = plugged/php.vim
+	url = git://github.com/StanAngeloff/php.vim
+[submodule "plugged/phpcomplete.vim"]
+	path = plugged/phpcomplete.vim
+	url = git://github.com/shawncplus/phpcomplete.vim
+[submodule "plugged/supertab"]
+	path = plugged/supertab
+	url = git://github.com/ervandew/supertab
+[submodule "plugged/tabular"]
+	path = plugged/tabular
+	url = git://github.com/godlygeek/tabular
+[submodule "plugged/vdebug"]
+	path = plugged/vdebug
+	url = git://github.com/joonty/vdebug
