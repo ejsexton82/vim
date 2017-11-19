@@ -38,23 +38,18 @@ set colorcolumn=80
 
 " PLUGINS:
 command! -nargs=* Tabularize :packadd tabular | Tabularize <f-args>
-
 autocmd! GUIEnter * packadd vim-colors-solarized
-
-" General Programming
-autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd indentLine
-autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd vim-commentary
-autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd vim-surround
-autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd ale
-
-" HTML
-autocmd! FileType html,javascript,php packadd vim-javascript
-
-" PHP
-autocmd! FileType php packadd supertab
-autocmd! FileType php packadd php.vim
-autocmd! FileType php packadd vdebug
-autocmd! FileType php packadd phpcomplete.vim
+autocmd! FileType vim,css,scss,sass,html,javascript,python,php 
+            \ packadd vim-commentary
+            \ | packadd vim-surround
+            \ | packadd ale
+autocmd! FileType html,javascript,php 
+            \ packadd vim-javascript
+autocmd! FileType php 
+            \ packadd supertab
+            \ | packadd php.vim
+            \ | packadd vdebug
+            \ | packadd phpcomplete.vim
 
 " Plug 'vim-scripts/autohotkey-ahk', { 'for': 'ahk' }
 " Plug 'chivalry/filemaker.vim', { 'for': 'fmcalc' }
@@ -186,16 +181,9 @@ highlight SignifySignChange ctermbg=None ctermfg=227
 " AIRLINE:
 " let g:airline_powerline_fonts            = 0
 let g:airline_symbols_ascii  		 = 1
-" let g:airline_left_sep                   = ''
-" let g:airline_left_alt_sep               = ''
-" let g:airline_right_sep                  = ''
-" let g:airline_right_alt_sep              = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme                      = 'solarized'
 let g:airline_solarized_bg               = 'dark'
-
-" INDENTLINE:
-let g:indentLine_char = '|'
 
 " THEME:
 if has('gui_running')

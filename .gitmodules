@@ -4,9 +4,6 @@
 [submodule "pack/vendor/start/fzf.vim"]
 	path = pack/vendor/start/fzf.vim
 	url = git://github.com/junegunn/fzf.vim
-[submodule "pack/vendor/opt/indentLine"]
-	path = pack/vendor/opt/indentLine
-	url = git://github.com/Yggdroot/indentLine
 [submodule "pack/vendor/opt/supertab"]
 	path = pack/vendor/opt/supertab
 	url = git://github.com/ervandew/supertab
@@ -52,3 +49,6 @@
 [submodule "pack/vendor/opt/phpcomplete.vim"]
 	path = pack/vendor/opt/phpcomplete.vim
 	url = git://github.com/shawncplus/phpcomplete.vim
+[submodule "pack/vendor/opt/vim-colors-solarized"]
+	path = pack/vendor/opt/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized
