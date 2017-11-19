@@ -1,33 +1,54 @@
-[submodule "plugged/ale"]
-	path = plugged/ale
-	url = git://github.com/w0rp/ale
-[submodule "plugged/ack.vim"]
-	path = plugged/ack.vim
-	url = git://github.com/mileszs/ack.vim
-[submodule "plugged/filemaker.vim"]
-	path = plugged/filemaker.vim
-	url = git://github.com/chivalry/filemaker.vim
-[submodule "plugged/fzf"]
-	path = plugged/fzf
+[submodule "pack/vendor/start/fzf"]
+	path = pack/vendor/start/fzf
 	url = git://github.com/junegunn/fzf
-[submodule "plugged/fzf.vim"]
-	path = plugged/fzf.vim
+[submodule "pack/vendor/start/fzf.vim"]
+	path = pack/vendor/start/fzf.vim
 	url = git://github.com/junegunn/fzf.vim
-[submodule "plugged/indentLine"]
-	path = plugged/indentLine
+[submodule "pack/vendor/opt/indentLine"]
+	path = pack/vendor/opt/indentLine
 	url = git://github.com/Yggdroot/indentLine
-[submodule "plugged/php.vim"]
-	path = plugged/php.vim
-	url = git://github.com/StanAngeloff/php.vim
-[submodule "plugged/phpcomplete.vim"]
-	path = plugged/phpcomplete.vim
-	url = git://github.com/shawncplus/phpcomplete.vim
-[submodule "plugged/supertab"]
-	path = plugged/supertab
+[submodule "pack/vendor/opt/supertab"]
+	path = pack/vendor/opt/supertab
 	url = git://github.com/ervandew/supertab
-[submodule "plugged/tabular"]
-	path = plugged/tabular
+[submodule "pack/vendor/opt/tabular"]
+	path = pack/vendor/opt/tabular
 	url = git://github.com/godlygeek/tabular
-[submodule "plugged/vdebug"]
-	path = plugged/vdebug
+[submodule "pack/vendor/start/vim-sauce"]
+	path = pack/vendor/start/vim-sauce
+	url = git://github.com/joonty/vim-sauce
+[submodule "pack/vendor/opt/vim-commentary"]
+	path = pack/vendor/opt/vim-commentary
+	url = git://github.com/tpope/vim-commentary
+[submodule "pack/vendor/opt/vim-surround"]
+	path = pack/vendor/opt/vim-surround
+	url = git://github.com/tpope/vim-surround
+[submodule "pack/vendor/start/vim-unimpaired"]
+	path = pack/vendor/start/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired
+[submodule "pack/vendor/start/vim-airline"]
+	path = pack/vendor/start/vim-airline
+	url = git://github.com/vim-airline/vim-airline
+[submodule "pack/vendor/start/vim-airline-themes"]
+	path = pack/vendor/start/vim-airline-themes
+	url = git://github.com/vim-airline/vim-airline-themes
+[submodule "pack/vendor/opt/ale"]
+	path = pack/vendor/opt/ale
+	url = git://github.com/w0rp/ale
+[submodule "pack/vendor/start/vim-signify"]
+	path = pack/vendor/start/vim-signify
+	url = git://github.com/mhinz/vim-signify
+[submodule "pack/vendor/start/vim-lawrencium"]
+	path = pack/vendor/start/vim-lawrencium
+	url = git://github.com/ludovicchabant/vim-lawrencium
+[submodule "pack/vendor/opt/vim-javascript"]
+	path = pack/vendor/opt/vim-javascript
+	url = git://github.com/pangloss/vim-javascript
+[submodule "pack/vendor/opt/php.vim"]
+	path = pack/vendor/opt/php.vim
+	url = git://github.com/StanAngeloff/php.vim
+[submodule "pack/vendor/opt/vdebug"]
+	path = pack/vendor/opt/vdebug
 	url = git://github.com/joonty/vdebug
+[submodule "pack/vendor/opt/phpcomplete.vim"]
+	path = pack/vendor/opt/phpcomplete.vim
+	url = git://github.com/shawncplus/phpcomplete.vim

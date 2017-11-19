@@ -37,54 +37,27 @@ set relativenumber      " Show relative line numbers
 set colorcolumn=80
 
 " PLUGINS:
-call plug#begin('~/vimfiles/plugged')
+command! -nargs=* Tabularize :packadd tabular | Tabularize <f-args>
 
-" Theme
-if has('gui_running')
-    Plug 'altercation/vim-colors-solarized'
-endif
+autocmd! GUIEnter * packadd vim-colors-solarized
 
-" General
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'           " Vertical Indendation Lines
-Plug 'ervandew/supertab'
-Plug 'godlygeek/tabular'             " Automatic Text Alignment
-Plug 'joonty/vim-sauce'
-" Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
+" General Programming
+autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd indentLine
+autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd vim-commentary
+autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd vim-surround
+autocmd! FileType vim,css,scss,sass,html,javascript,python,php packadd ale
 
-" Version Control
-Plug 'mhinz/vim-signify'
-Plug 'ludovicchabant/vim-lawrencium' " Mercurial wrapper
-
-" Prose
-"Plug 'junegunn/goyo.vim'
-
-" Other Formats
-" Plug 'vim-scripts/autohotkey-ahk', { 'for': 'ahk' }
-Plug 'chivalry/filemaker.vim', { 'for': 'fmcalc' }
+" HTML
+autocmd! FileType html,javascript,php packadd vim-javascript
 
 " PHP
-Plug 'pangloss/vim-javascript', { 'for': ['php', 'html'] }
-Plug 'StanAngeloff/php.vim', { 'for': 'php' }
-Plug 'joonty/vdebug', { 'for': 'php' }
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
+autocmd! FileType php packadd supertab
+autocmd! FileType php packadd php.vim
+autocmd! FileType php packadd vdebug
+autocmd! FileType php packadd phpcomplete.vim
 
-call plug#end()
-
-" ACK: vimgrep
-cnoreabbrev ack Ack
-if executable('rg')
-    let g:ackprg = 'rg --vimgrep --no-heading ' .
-            \ '--ignore-file .gitignore --ignore-file .hgignore '
-endif
+" Plug 'vim-scripts/autohotkey-ahk', { 'for': 'ahk' }
+" Plug 'chivalry/filemaker.vim', { 'for': 'fmcalc' }
 
 " FZF:
 let g:fzf_layout = { 'down': '~40%' }
