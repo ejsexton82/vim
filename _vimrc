@@ -31,28 +31,23 @@ if !has('gui_running')
 endif
 
 " LINE NUMBERS:
-" 2017-10-19 	Disabled set number to try to improve performance
-"set number              " Show current line number
 set relativenumber      " Show relative line numbers
 set colorcolumn=80
 
 " PLUGINS:
 command! -nargs=* Tabularize :packadd tabular | Tabularize <f-args>
-autocmd! GUIEnter * packadd vim-colors-solarized
-autocmd! FileType vim,css,scss,sass,html,javascript,python,php 
+autocmd GUIEnter * packadd vim-colors-solarized
+autocmd FileType vim,css,scss,sass,html,javascript,python,php 
             \ packadd vim-commentary
             \ | packadd vim-surround
             \ | packadd ale
-autocmd! FileType html,javascript,php 
+autocmd FileType html,javascript,php 
             \ packadd vim-javascript
-autocmd! FileType php 
+autocmd FileType php 
             \ packadd supertab
             \ | packadd php.vim
             \ | packadd vdebug
             \ | packadd phpcomplete.vim
-
-" Plug 'vim-scripts/autohotkey-ahk', { 'for': 'ahk' }
-" Plug 'chivalry/filemaker.vim', { 'for': 'fmcalc' }
 
 " FZF:
 let g:fzf_layout = { 'down': '~40%' }
@@ -64,6 +59,7 @@ let $FZF_DEFAULT_COMMAND = 'rg --files ' .
             \ '--glob !*.jpg --glob !*.jpeg --glob !*.jpe ' .
             \ '--glob !*.ttf --glob !*.eot '
 
+" Use RipGrep with FZF
 cnoreabbrev rg Rg
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -72,7 +68,7 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-
+" FZF Utilities
 nnoremap <C-p> :Files<CR>
 nnoremap ; :Buffers<CR>
 nnoremap ,b :Buffers<CR>
@@ -88,17 +84,6 @@ nnoremap ,t :Tags<CR>
 "imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 "imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" Ripgrep
-"command! -bang -nargs=* Rg
-"\ call fzf#vim#grep(
-"\   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-"\   <bang>0 ? fzf#vim#with_preview('up:60%')
-"\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-"\   <bang>0)
-
-
-" Search down into subfolders, tab completion
-set path+=**
 
 " QUICKFIX:
 nnoremap <leader>x :cclose<CR>
@@ -117,6 +102,9 @@ set wildignore+=*.jpg,*.jpeg
 set wildignore+=*.gif
 set wildignore+=*.png
 set wildignore+=*.svg
+
+" Search down into subfolders, tab completion
+set path+=**
 
 " Display all matching files for tab completion
 set wildmenu
@@ -145,9 +133,6 @@ if has('gui_running')
     cnoreabbr <expr> edi  (getcmdtype() . getcmdline() != ':edi'  ? 'edi'  : 'tabedit' )
     cnoreabbr <expr> edit (getcmdtype() . getcmdline() != ':edit' ? 'edit' : 'tabedit' )
 endif
-
-" INDENTING:
-"filetype indent plugin on
 
 " TAGS:
 command! MakeTags !ctags -R .
@@ -187,7 +172,6 @@ let g:airline_solarized_bg               = 'dark'
 
 " THEME:
 if has('gui_running')
-    set guifont=Inconsolata\ NF:h12
     set background=dark
     let g:solarized_termcolors=256
     colorscheme solarized
@@ -211,36 +195,16 @@ if has('gui_running')
     nnoremap <C-F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
 endif
 
-" CTRLP:
-let g:ctrlp_prompt_mappings = {
-            \ 'PrtBS()': ['<Char-0x07F>', '<BS>']
-            \}
-
-" Skip g:ctrlp_custom_ignore. Use wildingore.
-" (Unless I'm missing something...)
-"
-
-" PROSE MODE USING GOYO:
-"function! ProseMode()
-"call goyo#execute(0, [])
-"set spell noci nosi noai nolist noshowmode noshowcmd
-"set complete+=s
-""set bg=light
-"endfunction
-
-"command! ProseMode call ProseMode()
-"nmap \p :ProseMode<CR>
-
 " SAUCE:
 cnoreabbrev sauce Sauce
 
 " SUPERTAB:
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
-" Reload vim-colemak to remap any overridden keys
+" COLEMAK: Reload vim-colemak to remap any overridden keys
 source $HOME\vimfiles\autoload\colemak.vim
 
-" Custom Keys
+" CUSTOM KEYS:
 imap ii <Esc>
 nnoremap <C-a> ggVG
 
