@@ -58,6 +58,3 @@
 [submodule "pack/vendor/opt/traces.vim"]
 	path = pack/vendor/opt/traces.vim
 	url = git://github.com/xtal8/traces.vim
-[submodule "pack/vendor/start/traces.vim"]
-	path = pack/vendor/start/traces.vim
-	url = git://github.com/xtal8/traces.vim
