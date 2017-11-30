@@ -58,7 +58,8 @@ let $FZF_DEFAULT_COMMAND = 'rg --files ' .
 			\ '--glob !*.png ' .
 			\ '--glob !*.gif ' .
 			\ '--glob !*.jpg --glob !*.jpeg --glob !*.jpe ' .
-			\ '--glob !*.ttf --glob !*.eot '
+			\ '--glob !*.ttf --glob !*.eot ' .
+                        \ '--glob !*.lock '
 
 " Use RipGrep with FZF
 cnoreabbrev rg Rg
