@@ -41,6 +41,7 @@ autocmd FileType vim,css,scss,sass,html,javascript,python,php
 			\ packadd vim-commentary
 			\ | packadd vim-surround
 			\ | packadd ale
+                        \ | packadd tagbar
 autocmd FileType html,javascript,php
 			\ packadd vim-javascript
 autocmd FileType php
@@ -109,7 +110,7 @@ set path+=**
 " Display all matching files for tab completion
 set wildmenu
 
-" OMNICOMPLETION:
+" PHPCOMPLETE:
 set completeopt=longest,menuone
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
@@ -138,6 +139,9 @@ endif
 command! MakeTags !ctags -R .
 nnoremap <leader>t :tag <c-r><c-w><cr>
 " nnoremap ,t :TagbarOpenAutoClose<CR>
+
+" TAGBAR:
+nmap <F8> :TagbarToggle<CR>
 
 " SNIPPETS:
 nnoremap ,scontroller :-read $HOME/vimfiles/snippets/controller.php<CR>:%s/CLASS//g<Left><Left>
