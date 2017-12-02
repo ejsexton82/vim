@@ -49,6 +49,14 @@ autocmd FileType php
 			\ | packadd php.vim
 			\ | packadd vdebug
 			\ | packadd phpcomplete.vim
+autocmd FileType vim packadd vader.vim
+
+" ALE:
+let g:ale_fixers = {
+            \   'php': [
+            \       'phpcbf'
+            \   ]
+            \}
 
 " FZF:
 let g:fzf_layout = { 'down': '~40%' }
@@ -91,13 +99,9 @@ nnoremap ,t :Tags<CR>
 nnoremap <leader>x :cclose<CR>
 
 " WILDIGNORE:
-set wildignore+=*/.hg/*,*/.git/*
-set wildignore+=*/runtime/*,*/cache/*,*/vendor/*
-set wildignore+=*.tags,tags,*/tags
-set wildignore+=*.swp,*.orig
+set wildignore=*.swp,*.orig
 set wildignore+=*.lock
 set wildignore+=*.phar
-set wildignore+=*.eml
 set wildignore+=*.bak
 set wildignore+=*.ico
 set wildignore+=*.jpg,*.jpeg
@@ -205,9 +209,6 @@ cnoreabbrev sauce Sauce
 
 " SUPERTAB:
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" COLEMAK: Reload vim-colemak to remap any overridden keys
-source $HOME\vimfiles\autoload\colemak.vim
 
 " CUSTOM KEYS:
 imap ii <Esc>
