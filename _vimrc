@@ -52,9 +52,13 @@ autocmd FileType php
 autocmd FileType vader packadd vader.vim
 
 " ALE:
+cabbrev af ALEFix
+let g:ale_php_phpcbf_standard = 'PSR2'
 let g:ale_fixers = {
             \   'php': [
-            \       'phpcbf'
+            \       'phpcbf',
+            \       'remove_trailing_lines',
+            \       'trim_whitespace'
             \   ]
             \}
 
