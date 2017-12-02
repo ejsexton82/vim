@@ -41,7 +41,7 @@ autocmd FileType vim,css,scss,sass,html,javascript,python,php
 			\ packadd vim-commentary
 			\ | packadd vim-surround
 			\ | packadd ale
-                        \ | packadd tagbar
+			\ | packadd tagbar
 autocmd FileType html,javascript,php
 			\ packadd vim-javascript
 autocmd FileType php
@@ -50,53 +50,61 @@ autocmd FileType php
 			\ | packadd vdebug
 			\ | packadd phpcomplete.vim
 autocmd FileType vader packadd vader.vim
+if executable('fzf')
+	packadd fzf
+	packadd fzf.vim
+endif
 
 " ALE:
 cabbrev af ALEFix
 let g:ale_php_phpcbf_standard = 'PSR2'
 let g:ale_fixers = {
-            \   'php': [
-            \       'phpcbf',
-            \       'remove_trailing_lines',
-            \       'trim_whitespace'
-            \   ]
-            \}
+			\   'php': [
+			\       'phpcbf',
+			\       'remove_trailing_lines',
+			\       'trim_whitespace'
+			\   ]
+			\}
 
 " FZF:
-let g:fzf_layout = { 'down': '~40%' }
-let $FZF_DEFAULT_COMMAND = 'rg --files ' .
-			\ '--ignore-file .gitignore --ignore-file .hgignore ' .
-			\ '--glob !*.ico ' .
-			\ '--glob !*.png ' .
-			\ '--glob !*.gif ' .
-			\ '--glob !*.jpg --glob !*.jpeg --glob !*.jpe ' .
-			\ '--glob !*.ttf --glob !*.eot ' .
-                        \ '--glob !*.lock '
+if executable('fzf')
+	let g:fzf_layout = { 'down': '~40%' }
+	if executable('rg')
+		let $FZF_DEFAULT_COMMAND = 'rg --files ' .
+					\ '--ignore-file .gitignore --ignore-file .hgignore ' .
+					\ '--glob !*.ico ' .
+					\ '--glob !*.png ' .
+					\ '--glob !*.gif ' .
+					\ '--glob !*.jpg --glob !*.jpeg --glob !*.jpe ' .
+					\ '--glob !*.ttf --glob !*.eot ' .
+					\ '--glob !*.lock '
 
-" Use RipGrep with FZF
-cnoreabbrev rg Rg
-command! -bang -nargs=* Rg
-			\ call fzf#vim#grep(
-			\   'rg --column --line-number --no-heading --color=always '.<q-args>, 1,
-			\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-			\   <bang>0)
+		" Use RipGrep with FZF
+		cnoreabbrev rg Rg
+		command! -bang -nargs=* Rg
+					\ call fzf#vim#grep(
+					\   'rg --column --line-number --no-heading --color=always '.<q-args>, 1,
+					\   <bang>0 ? fzf#vim#with_preview('up:60%')
+					\           : fzf#vim#with_preview('right:50%:hidden', '?'),
+					\   <bang>0)
+	endif
 
-" FZF Utilities
-nnoremap <C-p> :Files<CR>
-nnoremap ; :Buffers<CR>
-nnoremap ,b :Buffers<CR>
-nnoremap ,f :Files<CR>
-nnoremap ,l :Lines<CR>
-nnoremap ,t :Tags<CR>
-"nnoremap <Leader>t :Files<CR>
-"nnoremap <Leader>r :Tags<CR>
+	" FZF Utilities
+	nnoremap <C-p> :Files<CR>
+	nnoremap ; :Buffers<CR>
+	nnoremap ,b :Buffers<CR>
+	nnoremap ,f :Files<CR>
+	nnoremap ,l :Lines<CR>
+	nnoremap ,t :Tags<CR>
+	"nnoremap <Leader>t :Files<CR>
+	"nnoremap <Leader>r :Tags<CR>
 
-" Insert mode completion
-"imap <c-x><c-k> <plug>(fzf-complete-word)
-"imap <c-x><c-f> <plug>(fzf-complete-path)
-"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-"imap <c-x><c-l> <plug>(fzf-complete-line)
+	" Insert mode completion
+	"imap <c-x><c-k> <plug>(fzf-complete-word)
+	"imap <c-x><c-f> <plug>(fzf-complete-path)
+	"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+	"imap <c-x><c-l> <plug>(fzf-complete-line)
+endif
 
 
 " QUICKFIX:
