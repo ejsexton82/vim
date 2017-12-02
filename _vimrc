@@ -49,7 +49,7 @@ autocmd FileType php
 			\ | packadd php.vim
 			\ | packadd vdebug
 			\ | packadd phpcomplete.vim
-autocmd FileType vim packadd vader.vim
+autocmd FileType vader packadd vader.vim
 
 " ALE:
 let g:ale_fixers = {

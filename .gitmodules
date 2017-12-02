@@ -61,3 +61,9 @@
 [submodule "pack/vendor/opt/tagbar"]
 	path = pack/vendor/opt/tagbar
 	url = git://github.com/majutsushi/tagbar
+[submodule "pack/mine/opt/ale"]
+	path = pack/mine/opt/ale
+	url = https://github.com/ejsexton82/ale
+[submodule "pack/vendor/opt/vader.vim"]
+	path = pack/vendor/opt/vader.vim
+	url = git://github.com/junegunn/vader.vim
