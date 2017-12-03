@@ -42,7 +42,7 @@
 	url = git://github.com/StanAngeloff/php.vim
 [submodule "pack/vendor/opt/vdebug"]
 	path = pack/vendor/opt/vdebug
-	url = git://github.com/joonty/vdebug
+	url = https://github.com/ejsexton82/vdebug
 [submodule "pack/vendor/opt/phpcomplete.vim"]
 	path = pack/vendor/opt/phpcomplete.vim
 	url = git://github.com/shawncplus/phpcomplete.vim
