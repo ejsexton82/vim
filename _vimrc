@@ -1,15 +1,32 @@
-" BASIC CONFIGURATION:
+" STANDARD VIM CONFIGURATION: 
+" {{{
+set nocompatible             " Make Vim stop acting like Vi
 
-set encoding=UTF-8        " Use UTF-8 encoding
-set nocompatible          " Make Vim stop acting like Vi
-syntax enable             " Enable syntax highlighting
-filetype plugin indent on " Enable file type plugins and indenting
-set fileformats=unix,dos  " Create new files using unix(LF) file format
-set number                " Show current line number
-set relativenumber        " Show relative line numbers (good for movements)
-set colorcolumn=80        " Show guide column at 80 characters
+syntax enable                " Enable syntax highlighting
+filetype plugin indent on    " Enable file type plugins and indenting
+
+set encoding=UTF-8           " Use UTF-8 encoding
+set fileformats=unix,dos,mac " Create new files using unix(LF) file format
+
+set number                   " Show current line number
+set relativenumber           " Show relative line numbers (good for movements)
+set colorcolumn=80           " Show guide column at 80 characters
+
+set foldmethod=marker        " Automatically fold default foldmarker
+
+set incsearch                " Incremental search highlighting
+set ignorecase               " Ignore case while searching...
+set smartcase                " ...except when there are capital letters
+
+set noshowmode               " Hide the mode since Airline shows it
+set laststatus=2             " Make sure the status line is displayed
+
+set nobackup                 " Don't need backup files
+set noswapfile               " Don't need swap files
+" }}}
 
 " CONEMU CONFIGURATION:
+" {{{
 if !has('gui_running')
     set term=xterm
 
@@ -29,8 +46,10 @@ if !has('gui_running')
     nnoremap <Esc>[62~ <C-E>
     nnoremap <Esc>[63~ <C-Y>
 endif
+" }}}
 
-" ALE:
+" ALE: Better than Syntastic!
+" {{{
 cabbrev af ALEFix
 let g:ale_lint_delay          = 1500   " Wait a couple seconds before linting
 let g:ale_lint_on_enter       = 0      " Stop ALE from linting when switching buffers
@@ -44,8 +63,10 @@ let g:ale_fixers              = {
             \       'trim_whitespace'
             \   ]
             \}
+" }}}
 
 " FZF: Better than Ctrl-P! (but only if it's installed)
+" {{{
 if executable('fzf')
     packadd! fzf
     packadd! fzf.vim
@@ -90,6 +111,7 @@ if executable('fzf')
 else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
+" }}}
 
 
 " QUICKFIX:
