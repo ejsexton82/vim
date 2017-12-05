@@ -14,6 +14,7 @@ set colorcolumn=80           " Show guide column at 80 characters
 
 set foldmethod=marker        " Automatically fold default foldmarker
 
+set gdefault                 " Replace globally (/g) by default
 set incsearch                " Incremental search highlighting
 set ignorecase               " Ignore case while searching...
 set smartcase                " ...except when there are capital letters
