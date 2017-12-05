@@ -1,12 +1,12 @@
 " BASIC CONFIGURATION:
 
-set encoding=UTF-8
+set encoding=UTF-8        " Use UTF-8 encoding
 set nocompatible          " Make Vim stop acting like Vi
 syntax enable             " Enable syntax highlighting
 filetype plugin indent on " Enable file type plugins and indenting
 set fileformats=unix,dos  " Create new files using unix(LF) file format
 set number                " Show current line number
-set relativenumber        " Show relative line numbers
+set relativenumber        " Show relative line numbers (good for movements)
 set colorcolumn=80        " Show guide column at 80 characters
 
 " CONEMU CONFIGURATION:
@@ -32,11 +32,11 @@ endif
 
 " ALE:
 cabbrev af ALEFix
-let g:ale_completion_delay    = 1500
-let g:ale_lint_on_enter       = 0
-let g:ale_php_phpcbf_standard = 'PSR2'
-let g:ale_sign_error          = ''
-let g:ale_sign_warning        = ''
+let g:ale_lint_delay          = 1500   " Wait a couple seconds before linting
+let g:ale_lint_on_enter       = 0      " Stop ALE from linting when switching buffers
+let g:ale_php_phpcbf_standard = 'PSR2' " Use PSR-2 formatting standards with PHP
+let g:ale_sign_error          = ''    " Cool ALE error symbol
+let g:ale_sign_warning        = ''    " Cool ALE warning symbol
 let g:ale_fixers              = {
             \   'php': [
             \       'phpcbf',
@@ -45,11 +45,13 @@ let g:ale_fixers              = {
             \   ]
             \}
 
-" FZF: Better than Ctrl-P!
+" FZF: Better than Ctrl-P! (but only if it's installed)
 if executable('fzf')
     packadd! fzf
     packadd! fzf.vim
     let g:fzf_layout = { 'down': '~40%' }
+
+    " WITH RG: Even better than FZF! (but only if it's installed)
     if executable('rg')
         let $FZF_DEFAULT_COMMAND = 'rg --files ' .
                     \ '--ignore-file .gitignore --ignore-file .hgignore ' .
