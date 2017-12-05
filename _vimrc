@@ -5,88 +5,88 @@ set nocompatible          " Make Vim stop acting like Vi
 syntax enable             " Enable syntax highlighting
 filetype plugin indent on " Enable file type plugins and indenting
 set fileformats=unix,dos  " Create new files using unix(LF) file format
+set number                " Show current line number
+set relativenumber        " Show relative line numbers
+set colorcolumn=80        " Show guide column at 80 characters
 
 " CONEMU CONFIGURATION:
 if !has('gui_running')
-	set term=xterm
+    set term=xterm
 
-	" Fix the colors
-	set t_Co=256
-	let &t_AB="\e[48;5;%dm"
-	let &t_AF="\e[38;5;%dm"
+    " Fix the colors
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
 
-	" Fix the BackSpace
-	inoremap <Char-0x07F> <BS>
-	nnoremap <Char-0x07F> <BS>
+    " Fix the BackSpace
+    inoremap <Char-0x07F> <BS>
+    nnoremap <Char-0x07F> <BS>
 
-	" Fix the Mouse Scroll Wheel
-	set mouse=a
-	inoremap <Esc>[62~ <C-X><C-E>
-	inoremap <Esc>[63~ <C-X><C-Y>
-	nnoremap <Esc>[62~ <C-E>
-	nnoremap <Esc>[63~ <C-Y>
-endif
-
-" LINE NUMBERS:
-set relativenumber      " Show relative line numbers
-set colorcolumn=80
-
-" PLUGINS:
-if executable('fzf')
-	packadd! fzf
-	packadd! fzf.vim
+    " Fix the Mouse Scroll Wheel
+    set mouse=a
+    inoremap <Esc>[62~ <C-X><C-E>
+    inoremap <Esc>[63~ <C-X><C-Y>
+    nnoremap <Esc>[62~ <C-E>
+    nnoremap <Esc>[63~ <C-Y>
 endif
 
 " ALE:
 cabbrev af ALEFix
-let g:ale_lint_on_enter = 0
+let g:ale_completion_delay    = 1500
+let g:ale_lint_on_enter       = 0
 let g:ale_php_phpcbf_standard = 'PSR2'
-let g:ale_fixers = {
-			\   'php': [
-			\       'phpcbf',
-			\       'remove_trailing_lines',
-			\       'trim_whitespace'
-			\   ]
-			\}
+let g:ale_sign_error          = ''
+let g:ale_sign_warning        = ''
+let g:ale_fixers              = {
+            \   'php': [
+            \       'phpcbf',
+            \       'remove_trailing_lines',
+            \       'trim_whitespace'
+            \   ]
+            \}
 
-" FZF:
+" FZF: Better than Ctrl-P!
 if executable('fzf')
-	let g:fzf_layout = { 'down': '~40%' }
-	if executable('rg')
-		let $FZF_DEFAULT_COMMAND = 'rg --files ' .
-					\ '--ignore-file .gitignore --ignore-file .hgignore ' .
-					\ '--glob !*.ico ' .
-					\ '--glob !*.png ' .
-					\ '--glob !*.gif ' .
-					\ '--glob !*.jpg --glob !*.jpeg --glob !*.jpe ' .
-					\ '--glob !*.ttf --glob !*.eot ' .
-					\ '--glob !*.lock '
+    packadd! fzf
+    packadd! fzf.vim
+    let g:fzf_layout = { 'down': '~40%' }
+    if executable('rg')
+        let $FZF_DEFAULT_COMMAND = 'rg --files ' .
+                    \ '--ignore-file .gitignore --ignore-file .hgignore ' .
+                    \ '--glob !*.ico ' .
+                    \ '--glob !*.png ' .
+                    \ '--glob !*.gif ' .
+                    \ '--glob !*.jpg --glob !*.jpeg --glob !*.jpe ' .
+                    \ '--glob !*.ttf --glob !*.eot ' .
+                    \ '--glob !*.lock '
 
-		" Use RipGrep with FZF
-		cnoreabbrev rg Rg
-		command! -bang -nargs=* Rg
-					\ call fzf#vim#grep(
-					\   'rg --column --line-number --no-heading --color=always '.<q-args>, 1,
-					\   <bang>0 ? fzf#vim#with_preview('up:60%')
-					\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-					\   <bang>0)
-	endif
+        " Use RipGrep with FZF
+        cnoreabbrev rg Rg
+        command! -bang -nargs=* Rg
+                    \ call fzf#vim#grep(
+                    \   'rg --column --line-number --no-heading --color=always '.<q-args>, 1,
+                    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+                    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+                    \   <bang>0)
+    endif
 
-	" FZF Utilities
-	nnoremap <C-p> :Files<CR>
-	nnoremap ; :Buffers<CR>
-	nnoremap ,b :Buffers<CR>
-	nnoremap ,f :Files<CR>
-	nnoremap ,l :Lines<CR>
-	nnoremap ,t :Tags<CR>
-	"nnoremap <Leader>t :Files<CR>
-	"nnoremap <Leader>r :Tags<CR>
+    " FZF Utilities
+    nnoremap <C-p> :Files<CR>
+    nnoremap ; :Buffers<CR>
+    nnoremap ,b :Buffers<CR>
+    nnoremap ,f :Files<CR>
+    nnoremap ,l :Lines<CR>
+    nnoremap ,t :Tags<CR>
+    "nnoremap <Leader>t :Files<CR>
+    "nnoremap <Leader>r :Tags<CR>
 
-	" Insert mode completion
-	"imap <c-x><c-k> <plug>(fzf-complete-word)
-	"imap <c-x><c-f> <plug>(fzf-complete-path)
-	"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-	"imap <c-x><c-l> <plug>(fzf-complete-line)
+    " Insert mode completion
+    "imap <c-x><c-k> <plug>(fzf-complete-word)
+    "imap <c-x><c-f> <plug>(fzf-complete-path)
+    "imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+    "imap <c-x><c-l> <plug>(fzf-complete-line)
+else
+    " TODO Default to Ctrl-P, because it's better than nothing
 endif
 
 
@@ -116,23 +116,23 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
 " TABS:
 if has('gui_running')
-	" Tab Commands
-	nnoremap <C-Tab>   :tabnext<CR>
-	nnoremap <C-S-Tab> :tabprev<CR>
+    " Tab Commands
+    nnoremap <C-Tab>   :tabnext<CR>
+    nnoremap <C-S-Tab> :tabprev<CR>
 
-	" opens commands in a new tab (colemak.vim from Shia Coleman)
-	cnoreabbr <expr> f    (getcmdtype() . getcmdline() != ':f'    ? 'f'    : 'tabfind' )
-	cnoreabbr <expr> fi   (getcmdtype() . getcmdline() != ':fi'   ? 'fi'   : 'tabfind' )
-	cnoreabbr <expr> fin  (getcmdtype() . getcmdline() != ':fin'  ? 'fin'  : 'tabfind' )
-	cnoreabbr <expr> find (getcmdtype() . getcmdline() != ':find' ? 'find' : 'tabfind' )
-	cnoreabbr <expr> h    (getcmdtype() . getcmdline() != ':h'    ? 'h'    : 'tab help')
-	cnoreabbr <expr> he   (getcmdtype() . getcmdline() != ':he'   ? 'he'   : 'tab help')
-	cnoreabbr <expr> hel  (getcmdtype() . getcmdline() != ':hel'  ? 'hel'  : 'tab help')
-	cnoreabbr <expr> help (getcmdtype() . getcmdline() != ':help' ? 'help' : 'tab help')
-	cnoreabbr <expr> e    (getcmdtype() . getcmdline() != ':e'    ? 'e'    : 'tabedit' )
-	cnoreabbr <expr> ed   (getcmdtype() . getcmdline() != ':ed'   ? 'ed'   : 'tabedit' )
-	cnoreabbr <expr> edi  (getcmdtype() . getcmdline() != ':edi'  ? 'edi'  : 'tabedit' )
-	cnoreabbr <expr> edit (getcmdtype() . getcmdline() != ':edit' ? 'edit' : 'tabedit' )
+    " opens commands in a new tab (colemak.vim from Shia Coleman)
+    cnoreabbr <expr> f    (getcmdtype() . getcmdline() != ':f'    ? 'f'    : 'tabfind' )
+    cnoreabbr <expr> fi   (getcmdtype() . getcmdline() != ':fi'   ? 'fi'   : 'tabfind' )
+    cnoreabbr <expr> fin  (getcmdtype() . getcmdline() != ':fin'  ? 'fin'  : 'tabfind' )
+    cnoreabbr <expr> find (getcmdtype() . getcmdline() != ':find' ? 'find' : 'tabfind' )
+    cnoreabbr <expr> h    (getcmdtype() . getcmdline() != ':h'    ? 'h'    : 'tab help')
+    cnoreabbr <expr> he   (getcmdtype() . getcmdline() != ':he'   ? 'he'   : 'tab help')
+    cnoreabbr <expr> hel  (getcmdtype() . getcmdline() != ':hel'  ? 'hel'  : 'tab help')
+    cnoreabbr <expr> help (getcmdtype() . getcmdline() != ':help' ? 'help' : 'tab help')
+    cnoreabbr <expr> e    (getcmdtype() . getcmdline() != ':e'    ? 'e'    : 'tabedit' )
+    cnoreabbr <expr> ed   (getcmdtype() . getcmdline() != ':ed'   ? 'ed'   : 'tabedit' )
+    cnoreabbr <expr> edi  (getcmdtype() . getcmdline() != ':edi'  ? 'edi'  : 'tabedit' )
+    cnoreabbr <expr> edit (getcmdtype() . getcmdline() != ':edit' ? 'edit' : 'tabedit' )
 endif
 
 " TAGS:
@@ -157,8 +157,8 @@ nnoremap ,sulgb4 :-read $HOME/vimfiles/snippets/ulgb4.php<CR>o
 
 " GREP:
 if executable("rg")
-	set grepprg=rg\ --vimgrep\ --no-heading
-	set grepformat=%f:%l:%c:%m,%f:%l:%m
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 " SIGNIFY:
@@ -168,35 +168,39 @@ highlight SignifySignDelete ctermbg=None ctermfg=167
 highlight SignifySignChange ctermbg=None ctermfg=227
 
 " AIRLINE:
-" let g:airline_powerline_fonts            = 0
-let g:airline_symbols_ascii  		 = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme           = 'solarized'
+let g:airline_solarized_bg    = 'dark'
+
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme                      = 'solarized'
-let g:airline_solarized_bg               = 'dark'
 
 " THEME:
 if has('gui_running')
-	set background=dark
-	let g:solarized_termcolors=256
-	colorscheme solarized
+    set background=dark
+    let g:solarized_termcolors=256
+    colorscheme solarized
 endif
+
+" Pretty Splits
+set fillchars=vert:│
+highlight VertSplit term=NONE cterm=NONE gui=NONE
 
 " FULL SCREEN:
 if has('gui_running')
-	" Automatically switch to fullscreen on load
-	autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
-	autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "SetAlpha", 240)
+    " Automatically switch to fullscreen on load
+    autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
+    autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "SetAlpha", 240)
 
-	" Hide some things we don't want
-	set guioptions-=m
-	set guioptions-=T
-	set guioptions-=r
-	set guioptions-=L
-	set guioptions-=e
+    " Hide some things we don't want
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions-=e
 
-	" Map some keys to enable fullscreen
-	noremap  <C-F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
-	nnoremap <C-F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
+    " Map some keys to enable fullscreen
+    noremap  <C-F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
+    nnoremap <C-F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
 endif
 
 " SAUCE:
