@@ -8,7 +8,7 @@
 	path = pack/vendor/opt/supertab
 	url = git://github.com/ervandew/supertab
 [submodule "pack/vendor/opt/tabular"]
-	path = pack/vendor/opt/tabular
+	path = pack/vendor/start/tabular
 	url = git://github.com/godlygeek/tabular
 [submodule "pack/vendor/start/vim-sauce"]
 	path = pack/vendor/start/vim-sauce

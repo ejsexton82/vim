@@ -1,13 +1,10 @@
 " BASIC CONFIGURATION:
 
 set encoding=UTF-8
-
-" Make Vim stop acting like Vi
-set nocompatible
-
-" Enable syntax and plugins
-syntax enable
-filetype plugin indent on
+set nocompatible          " Make Vim stop acting like Vi
+syntax enable             " Enable syntax highlighting
+filetype plugin indent on " Enable file type plugins and indenting
+set fileformats=unix,dos  " Create new files using unix(LF) file format
 
 " CONEMU CONFIGURATION:
 if !has('gui_running')
@@ -35,24 +32,9 @@ set relativenumber      " Show relative line numbers
 set colorcolumn=80
 
 " PLUGINS:
-command! -nargs=* Tabularize :packadd tabular | Tabularize <f-args>
-autocmd GUIEnter * packadd vim-colors-solarized
-autocmd FileType vim,css,scss,sass,html,javascript,python,php
-			\ packadd vim-commentary
-			\ | packadd vim-surround
-			\ | packadd ale
-			\ | packadd tagbar
-autocmd FileType html,javascript,php
-			\ packadd vim-javascript
-autocmd FileType php
-			\ packadd supertab
-			\ | packadd php.vim
-			\ | packadd vdebug
-			\ | packadd phpcomplete.vim
-autocmd FileType vader packadd vader.vim
 if executable('fzf')
-	packadd fzf
-	packadd fzf.vim
+	packadd! fzf
+	packadd! fzf.vim
 endif
 
 " ALE:
