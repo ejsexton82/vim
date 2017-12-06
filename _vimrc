@@ -156,9 +156,6 @@ endif
 
 " SHORTCUTS:
 " {{{
-" Command shortcuts
-cnoreabbrev sauce Sauce
-
 " Insert mode shortcuts
 imap ii <Esc>
 
@@ -193,6 +190,13 @@ nnoremap ,sttcontroller :-read $HOME/vimfiles/snippets/ttcontroller.php<CR>:%s/C
 nnoremap ,sttmodel :-read $HOME/vimfiles/snippets/ttmodel.php<CR>:%s/CLASS//g<Left><Left>
 nnoremap ,stttrait :-read $HOME/vimfiles/snippets/tttrait.php<CR>:%s/CLASS//g<Left><Left>
 nnoremap ,sulgb4 :-read $HOME/vimfiles/snippets/ulgb4.php<CR>o
+" }}}
+
+" STARTIFY:
+" {{{
+let g:startify_session_persistence = 1
+let g:startify_list_order          = ['sessions', 'bookmarks', 'files', 'commands']
+let g:startify_fortune_use_unicode = 1
 " }}}
 
 " THEME:

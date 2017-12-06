@@ -10,9 +10,6 @@
 [submodule "pack/vendor/opt/tabular"]
 	path = pack/vendor/start/tabular
 	url = git://github.com/godlygeek/tabular
-[submodule "pack/vendor/start/vim-sauce"]
-	path = pack/vendor/start/vim-sauce
-	url = git://github.com/joonty/vim-sauce
 [submodule "pack/vendor/opt/vim-commentary"]
 	path = pack/vendor/opt/vim-commentary
 	url = git://github.com/tpope/vim-commentary
@@ -64,3 +61,6 @@
 [submodule "pack/vendor/opt/ale"]
 	path = pack/vendor/opt/ale
 	url = git://github.com/w0rp/ale
+[submodule "pack/vendor/start/vim-startify"]
+	path = pack/vendor/start/vim-startify
+	url = git://github.com/mhinz/vim-startify
