@@ -195,7 +195,11 @@ nnoremap ,sulgb4 :-read $HOME/vimfiles/snippets/ulgb4.php<CR>o
 " STARTIFY:
 " {{{
 let g:startify_session_persistence = 1
-let g:startify_list_order          = ['sessions', 'bookmarks', 'files', 'commands']
+let g:startify_list_order          = [
+            \   ['Sessions'], 'sessions', 
+            \   ['Recent Files'], 'files', 
+            \   ['Commands'], 'commands'
+            \]
 let g:startify_fortune_use_unicode = 1
 " }}}
 
