@@ -1,4 +1,4 @@
-" STANDARD VIM CONFIGURATION: 
+" STANDARD VIM CONFIGURATION:
 " {{{
 set nocompatible             " Make Vim stop acting like Vi
 
@@ -7,6 +7,13 @@ filetype plugin indent on    " Enable file type plugins and indenting
 
 set encoding=UTF-8           " Use UTF-8 encoding
 set fileformats=unix,dos,mac " Create new files using unix(LF) file format
+
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone " Show full completion menu, even with one entry
+set pumheight=15             " Completion menu height
+
+set sidescrolloff=3          " Keep 3 lines left/right
+set scrolloff=3              " Keep 3 lines above/below
 
 set number                   " Show current line number
 set relativenumber           " Show relative line numbers (good for movements)
@@ -24,6 +31,19 @@ set laststatus=2             " Make sure the status line is displayed
 
 set nobackup                 " Don't need backup files
 set noswapfile               " Don't need swap files
+
+set path+=**                 " Search subfolders with find tab completion
+set wildmenu                 " Displays all matches for tab completion
+set wildignore=*.swp,*.orig  " Basic file types to ignore with find tab completion
+set wildignore+=*.lock
+set wildignore+=*.phar
+set wildignore+=*.bak
+set wildignore+=*.ico
+set wildignore+=*.jpg,*.jpeg
+set wildignore+=*.gif
+set wildignore+=*.png
+set wildignore+=*.svg
+
 " }}}
 
 " CONEMU CONFIGURATION:
@@ -49,6 +69,14 @@ if !has('gui_running')
 endif
 " }}}
 
+" AIRLINE:
+" {{{
+let g:airline_powerline_fonts = 1
+let g:airline_theme           = 'solarized'
+let g:airline_solarized_bg    = 'dark'
+let g:airline#extensions#tabline#enabled = 1
+" }}}
+
 " ALE: Better than Syntastic!
 " {{{
 cabbrev af ALEFix
@@ -60,6 +88,10 @@ let g:ale_sign_warning        = ''    " Cool ALE warning symbol
 let g:ale_fixers              = {
             \   'php': [
             \       'phpcbf',
+            \       'remove_trailing_lines',
+            \       'trim_whitespace'
+            \   ],
+            \   'vim': [
             \       'remove_trailing_lines',
             \       'trim_whitespace'
             \   ]
@@ -114,61 +146,44 @@ else
 endif
 " }}}
 
-
-" QUICKFIX:
-nnoremap <leader>x :cclose<CR>
-
-" WILDIGNORE:
-set wildignore=*.swp,*.orig
-set wildignore+=*.lock
-set wildignore+=*.phar
-set wildignore+=*.bak
-set wildignore+=*.ico
-set wildignore+=*.jpg,*.jpeg
-set wildignore+=*.gif
-set wildignore+=*.png
-set wildignore+=*.svg
-
-" Search down into subfolders, tab completion
-set path+=**
-
-" Display all matching files for tab completion
-set wildmenu
-
-" PHPCOMPLETE:
-set completeopt=longest,menuone
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-
-" TABS:
-if has('gui_running')
-    " Tab Commands
-    nnoremap <C-Tab>   :tabnext<CR>
-    nnoremap <C-S-Tab> :tabprev<CR>
-
-    " opens commands in a new tab (colemak.vim from Shia Coleman)
-    cnoreabbr <expr> f    (getcmdtype() . getcmdline() != ':f'    ? 'f'    : 'tabfind' )
-    cnoreabbr <expr> fi   (getcmdtype() . getcmdline() != ':fi'   ? 'fi'   : 'tabfind' )
-    cnoreabbr <expr> fin  (getcmdtype() . getcmdline() != ':fin'  ? 'fin'  : 'tabfind' )
-    cnoreabbr <expr> find (getcmdtype() . getcmdline() != ':find' ? 'find' : 'tabfind' )
-    cnoreabbr <expr> h    (getcmdtype() . getcmdline() != ':h'    ? 'h'    : 'tab help')
-    cnoreabbr <expr> he   (getcmdtype() . getcmdline() != ':he'   ? 'he'   : 'tab help')
-    cnoreabbr <expr> hel  (getcmdtype() . getcmdline() != ':hel'  ? 'hel'  : 'tab help')
-    cnoreabbr <expr> help (getcmdtype() . getcmdline() != ':help' ? 'help' : 'tab help')
-    cnoreabbr <expr> e    (getcmdtype() . getcmdline() != ':e'    ? 'e'    : 'tabedit' )
-    cnoreabbr <expr> ed   (getcmdtype() . getcmdline() != ':ed'   ? 'ed'   : 'tabedit' )
-    cnoreabbr <expr> edi  (getcmdtype() . getcmdline() != ':edi'  ? 'edi'  : 'tabedit' )
-    cnoreabbr <expr> edit (getcmdtype() . getcmdline() != ':edit' ? 'edit' : 'tabedit' )
+" RIPGREP: Better than Grep! (but only if it's installed)
+" {{{
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+" }}}
 
-" TAGS:
+" SHORTCUTS:
+" {{{
+" Command shortcuts
+cnoreabbrev sauce Sauce
+
+" Insert mode shortcuts
+imap ii <Esc>
+
+" Tag shortcuts
 command! MakeTags !ctags -R .
 nnoremap <leader>t :tag <c-r><c-w><cr>
-" nnoremap ,t :TagbarOpenAutoClose<CR>
 
-" TAGBAR:
-nmap <F8> :TagbarToggle<CR>
+" Quickfix shortcut
+nnoremap <leader>x :cclose<CR>
+
+nnoremap <C-a> ggVG
+map  <C-s> <Esc>:w<CR>
+nmap <C-s> :w<CR>
+" }}}
+
+" SIGNIFY:
+" {{{
+highlight SignColumn        ctermbg=None
+highlight SignifySignAdd    ctermbg=None ctermfg=119
+highlight SignifySignDelete ctermbg=None ctermfg=167
+highlight SignifySignChange ctermbg=None ctermfg=227
+" }}}
 
 " SNIPPETS:
+" {{{
 nnoremap ,scontroller :-read $HOME/vimfiles/snippets/controller.php<CR>:%s/CLASS//g<Left><Left>
 nnoremap ,sdivgbrow :-read $HOME/vimfiles/snippets/divgbrow.php<CR>o
 nnoremap ,shtml :-read $HOME/vimfiles/snippets/skeleton.html<CR>/HERE<CR>4x
@@ -178,70 +193,11 @@ nnoremap ,sttcontroller :-read $HOME/vimfiles/snippets/ttcontroller.php<CR>:%s/C
 nnoremap ,sttmodel :-read $HOME/vimfiles/snippets/ttmodel.php<CR>:%s/CLASS//g<Left><Left>
 nnoremap ,stttrait :-read $HOME/vimfiles/snippets/tttrait.php<CR>:%s/CLASS//g<Left><Left>
 nnoremap ,sulgb4 :-read $HOME/vimfiles/snippets/ulgb4.php<CR>o
-
-
-" GREP:
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-
-" SIGNIFY:
-highlight SignColumn        ctermbg=None
-highlight SignifySignAdd    ctermbg=None ctermfg=119
-highlight SignifySignDelete ctermbg=None ctermfg=167
-highlight SignifySignChange ctermbg=None ctermfg=227
-
-" AIRLINE:
-let g:airline_powerline_fonts = 1
-let g:airline_theme           = 'solarized'
-let g:airline_solarized_bg    = 'dark'
-
-let g:airline#extensions#tabline#enabled = 1
+" }}}
 
 " THEME:
-if has('gui_running')
-    set background=dark
-    let g:solarized_termcolors=256
-    colorscheme solarized
-endif
-
-" Pretty Splits
+" {{{
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
-
-" FULL SCREEN:
-if has('gui_running')
-    " Automatically switch to fullscreen on load
-    autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
-    autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "SetAlpha", 240)
-
-    " Hide some things we don't want
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions-=e
-
-    " Map some keys to enable fullscreen
-    noremap  <C-F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
-    nnoremap <C-F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
-endif
-
-" SAUCE:
-cnoreabbrev sauce Sauce
-
-" SUPERTAB:
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" CUSTOM KEYS:
-imap ii <Esc>
-nnoremap <C-a> ggVG
-
-" FILE OPERATIONS:
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
-vnoremap <C-s> <Esc>:w<CR>
-cnoremap <C-s> <Esc>:w<CR>
-
-
+highlight Folded    ctermbg=4
+" }}}

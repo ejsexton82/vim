@@ -3,14 +3,10 @@ if exists('b:did_ftplugin')
 endif
 let b:did_ftplugin = 1
 
-" TABS:
-set expandtab
-set tabstop=4
-set shiftwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
 
-" PLUGINS:
 if exists('g:loaded_ftplugin_php_plugins')
-	finish
+    finish
 endif
 let g:loaded_ftplugin_php_plugins=1
 
@@ -20,5 +16,5 @@ source $HOME/vimfiles/ftplugin/javascript/plugins.vim
 packadd php.vim
 packadd phpcomplete.vim
 packadd supertab
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 packadd vdebug
-
