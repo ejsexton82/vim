@@ -64,3 +64,6 @@
 [submodule "pack/vendor/start/vim-startify"]
 	path = pack/vendor/start/vim-startify
 	url = git://github.com/mhinz/vim-startify
+[submodule "pack/vendor/start/ack.vim"]
+	path = pack/vendor/start/ack.vim
+	url = git://github.com/mileszs/ack.vim

@@ -69,6 +69,16 @@ if !has('gui_running')
 endif
 " }}}
 
+" ACK:
+" {{{
+cnoreabbrev ack Ack
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep --no-heading'
+elseif executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+" }}}
+
 " AIRLINE:
 " {{{
 let g:airline_powerline_fonts = 1
