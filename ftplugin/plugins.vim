@@ -10,7 +10,13 @@ endif
 let g:loaded_ftplugin_plugins=1
 
 packadd ale
+
+packadd indentLine
+let g:indentLine_char = '┊'
+
 packadd tagbar
 nmap <F8> :TagbarToggle<CR>
+
 packadd vim-commentary
+
 packadd vim-surround

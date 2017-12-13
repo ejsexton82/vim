@@ -67,3 +67,6 @@
 [submodule "pack/vendor/start/ack.vim"]
 	path = pack/vendor/start/ack.vim
 	url = git://github.com/mileszs/ack.vim
+[submodule "pack/vendor/opt/indentLine"]
+	path = pack/vendor/opt/indentLine
+	url = git://github.com/Yggdroot/indentLine
