@@ -87,27 +87,6 @@ let g:airline_solarized_bg    = 'dark'
 let g:airline#extensions#tabline#enabled = 1
 " }}}
 
-" ALE: Better than Syntastic!
-" {{{
-cabbrev af ALEFix
-let g:ale_lint_delay          = 1500   " Wait a couple seconds before linting
-let g:ale_lint_on_enter       = 0      " Stop ALE from linting when switching buffers
-let g:ale_php_phpcbf_standard = 'PSR2' " Use PSR-2 formatting standards with PHP
-let g:ale_sign_error          = ''    " Cool ALE error symbol
-let g:ale_sign_warning        = ''    " Cool ALE warning symbol
-let g:ale_fixers              = {
-            \   'php': [
-            \       'phpcbf',
-            \       'remove_trailing_lines',
-            \       'trim_whitespace'
-            \   ],
-            \   'vim': [
-            \       'remove_trailing_lines',
-            \       'trim_whitespace'
-            \   ]
-            \}
-" }}}
-
 " FZF: Better than Ctrl-P! (but only if it's installed)
 " {{{
 if executable('fzf')
@@ -206,8 +185,8 @@ nnoremap ,sulgb4 :-read $HOME/vimfiles/snippets/ulgb4.php<CR>o
 " {{{
 let g:startify_session_persistence = 1
 let g:startify_list_order          = [
-            \   ['Sessions'], 'sessions', 
-            \   ['Recent Files'], 'files', 
+            \   ['Sessions'], 'sessions',
+            \   ['Recent Files'], 'files',
             \   ['Commands'], 'commands'
             \]
 let g:startify_fortune_use_unicode = 1

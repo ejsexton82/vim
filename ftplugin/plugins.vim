@@ -9,13 +9,34 @@ if exists('g:loaded_ftplugin_plugins')
 endif
 let g:loaded_ftplugin_plugins=1
 
-packadd ale
+packadd ale " Better than Syntastic!
+" {{{
+cabbrev af ALEFix
+let g:ale_lint_delay          = 1500   " Wait a couple seconds before linting
+let g:ale_lint_on_enter       = 0      " Stop ALE from linting when switching buffers
+let g:ale_php_phpcbf_standard = 'PSR2' " Use PSR-2 formatting standards with PHP
+let g:ale_fixers              = {
+            \   'php': [
+            \       'phpcbf',
+            \       'remove_trailing_lines',
+            \       'trim_whitespace'
+            \   ],
+            \   'vim': [
+            \       'remove_trailing_lines',
+            \       'trim_whitespace'
+            \   ]
+            \}
+" }}}
 
 packadd indentLine
+" {{{
 let g:indentLine_char = '┊'
+" }}}
 
 packadd tagbar
+" {{{
 nmap <F8> :TagbarToggle<CR>
+" }}}
 
 packadd vim-commentary
 

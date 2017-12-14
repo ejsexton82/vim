@@ -1,2 +1,2 @@
-# vim
-E.J. Sexton's Vim Configuration
+# Vim Configuration
+This is my personal Vim configuration.
