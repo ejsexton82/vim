@@ -9,7 +9,7 @@ if exists('g:loaded_ftplugin_plugins')
 endif
 let g:loaded_ftplugin_plugins=1
 
-packadd ale " Better than Syntastic!
+" ALE: Better than Syntastic!
 " {{{
 cabbrev af ALEFix
 let g:ale_lint_delay          = 1500   " Wait a couple seconds before linting
@@ -27,16 +27,19 @@ let g:ale_fixers              = {
             \   ]
             \}
 " }}}
+packadd ale
 
-packadd indentLine
+" INDENTLINE:
 " {{{
 let g:indentLine_char = '┊'
 " }}}
+packadd indentLine
 
-packadd tagbar
+" TAGBAR:
 " {{{
 nmap <F8> :TagbarToggle<CR>
 " }}}
+packadd tagbar
 
 packadd vim-commentary
 
