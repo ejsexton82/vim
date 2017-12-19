@@ -155,7 +155,15 @@ nnoremap <leader>t :tag <c-r><c-w><cr>
 " Quickfix shortcut
 nnoremap <leader>x :cclose<CR>
 
+" Cut/Copy/Paste
+vmap <C-x> "*d
+vmap <C-c> "*y
+vmap <C-v> "*p
+
+" Select All
 nnoremap <C-a> ggVG
+
+" Save buffers
 map  <C-s> <Esc>:w<CR>
 nmap <C-s> :w<CR>
 " }}}
