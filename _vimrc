@@ -44,6 +44,11 @@ set wildignore+=*.gif
 set wildignore+=*.png
 set wildignore+=*.svg
 
+set formatoptions+=j        " Sane line join formatting
+
+match ErrorMsg '\%>120v.\+' " Highlight lines >120 characters
+match ErrorMsg '\s\+$'      " Highlight trailing whitespace
+
 " }}}
 
 " CONEMU CONFIGURATION:
@@ -166,6 +171,10 @@ nnoremap <C-a> ggVG
 " Save buffers
 map  <C-s> <Esc>:w<CR>
 nmap <C-s> :w<CR>
+
+" Visual Mode
+vnoremap < <gv
+vnoremap > >gv
 " }}}
 
 " SIGNIFY:
