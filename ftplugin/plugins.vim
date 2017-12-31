@@ -41,6 +41,6 @@ nmap <F8> :TagbarToggle<CR>
 " }}}
 packadd tagbar
 
+packadd vim-autoclose
 packadd vim-commentary
-
 packadd vim-surround
