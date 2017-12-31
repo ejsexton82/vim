@@ -23,3 +23,4 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 packadd supertab
 
 packadd vdebug
+packadd vim-autoclose
