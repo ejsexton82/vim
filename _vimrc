@@ -26,8 +26,27 @@ set incsearch                " Incremental search highlighting
 set ignorecase               " Ignore case while searching...
 set smartcase                " ...except when there are capital letters
 
-set noshowmode               " Hide the mode since Airline shows it
 set laststatus=2             " Make sure the status line is displayed
+
+set statusline=
+set statusline+=%#SpellLocal#
+set statusline+=%h                           " Help buffer flag
+set statusline+=%q                           " Quickfix list buffer flag
+set statusline+=%{SignifyStatus()}           " Signify Status
+
+set statusline+=%*
+set statusline+=\ %f                         " File path
+set statusline+=%m                           " Modified
+set statusline+=%=                           " Right Align
+set statusline+=%y\                          " filetype
+
+set statusline+=%#SpellLocal#
+set statusline+=\ %{empty(&fenc)?&enc:&fenc} " File Encoding
+set statusline+=[%{&ff}]\                    " File Format
+
+set statusline+=%#Search#
+set statusline+=\ %p%%\ \                    " Percentage of lines
+set statusline+=%l/%L\ ln\ :\ %c\            " Line Number
 
 set nobackup                 " Don't need backup files
 set noswapfile               " Don't need swap files
@@ -84,14 +103,6 @@ elseif executable('ag')
 endif
 " }}}
 
-" AIRLINE:
-" {{{
-let g:airline_powerline_fonts = 1
-let g:airline_theme           = 'solarized'
-let g:airline_solarized_bg    = 'dark'
-let g:airline#extensions#tabline#enabled = 1
-" }}}
-
 " FZF: Better than Ctrl-P! (but only if it's installed)
 " {{{
 if executable('fzf')
@@ -122,11 +133,10 @@ if executable('fzf')
 
     " FZF Utilities
     nnoremap <C-p> :Files<CR>
-    nnoremap ; :Buffers<CR>
-    nnoremap ,b :Buffers<CR>
-    nnoremap ,f :Files<CR>
-    nnoremap ,l :Lines<CR>
-    nnoremap ,t :Tags<CR>
+    nnoremap <leader>b :Buffers<CR>
+    nnoremap <leader>f :Files<CR>
+    nnoremap <leader>l :Lines<CR>
+    nnoremap <leader>t :Tags<CR>
     "nnoremap <Leader>t :Files<CR>
     "nnoremap <Leader>r :Tags<CR>
 
@@ -179,23 +189,36 @@ vnoremap > >gv
 
 " SIGNIFY:
 " {{{
+let g:signify_sign_change="~"
 highlight SignColumn        ctermbg=None
 highlight SignifySignAdd    ctermbg=None ctermfg=119
 highlight SignifySignDelete ctermbg=None ctermfg=167
 highlight SignifySignChange ctermbg=None ctermfg=227
-" }}}
-
-" SNIPPETS:
-" {{{
-nnoremap ,scontroller :-read $HOME/vimfiles/snippets/controller.php<CR>:%s/CLASS//g<Left><Left>
-nnoremap ,sdivgbrow :-read $HOME/vimfiles/snippets/divgbrow.php<CR>o
-nnoremap ,shtml :-read $HOME/vimfiles/snippets/skeleton.html<CR>/HERE<CR>4x
-nnoremap ,smodel :-read $HOME/vimfiles/snippets/model.php<CR>:%s/CLASS//g<Left><Left>
-nnoremap ,stestcase :-read $HOME/vimfiles/snippets/testcase.php<CR>:%s/CLASS//g<Left><Left>
-nnoremap ,sttcontroller :-read $HOME/vimfiles/snippets/ttcontroller.php<CR>:%s/CLASS//g<Left><Left>
-nnoremap ,sttmodel :-read $HOME/vimfiles/snippets/ttmodel.php<CR>:%s/CLASS//g<Left><Left>
-nnoremap ,stttrait :-read $HOME/vimfiles/snippets/tttrait.php<CR>:%s/CLASS//g<Left><Left>
-nnoremap ,sulgb4 :-read $HOME/vimfiles/snippets/ulgb4.php<CR>o
+function! SignifyStatus()
+    if !exists("g:loaded_signify")
+        return ''
+    endif
+    let [added, modified, removed] = sy#repo#get_stats()
+    let l:sy = ''
+    for [flag, flagCount] in [
+                \   [exists("g:signify_sign_add")?g:signify_sign_add:'+', added],
+                \   [exists("g:signify_sign_change")?g:signify_sign_change:'!', modified],
+                \   [exists("g:signify_sign_delete")?g:signify_sign_delete:'-', removed]
+                \ ]
+        if flagCount > 0
+            if !empty(l:sy)
+                let l:sy .= ' '
+            endif
+            let l:sy .= printf('%s%d', flag, flagCount)
+        endif
+    endfor
+    if !empty(l:sy)
+        return printf('  %s ', l:sy)
+    else
+        return ''
+    endif
+endfunction
+call SignifyStatus()
 " }}}
 
 " STARTIFY:

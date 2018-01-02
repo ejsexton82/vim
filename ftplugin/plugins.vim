@@ -41,6 +41,12 @@ nmap <F8> :TagbarToggle<CR>
 " }}}
 packadd tagbar
 
+" VIM AUTOCLOSE:
+" {{{
+" Minimal autoclosing
+let g:AutoClosePairs = "() {} []"
+" }}}
 packadd vim-autoclose
+
 packadd vim-commentary
 packadd vim-surround

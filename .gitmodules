@@ -19,12 +19,6 @@
 [submodule "pack/vendor/start/vim-unimpaired"]
 	path = pack/vendor/start/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired
-[submodule "pack/vendor/start/vim-airline"]
-	path = pack/vendor/start/vim-airline
-	url = git://github.com/vim-airline/vim-airline
-[submodule "pack/vendor/start/vim-airline-themes"]
-	path = pack/vendor/start/vim-airline-themes
-	url = git://github.com/vim-airline/vim-airline-themes
 [submodule "pack/vendor/start/vim-signify"]
 	path = pack/vendor/start/vim-signify
 	url = git://github.com/mhinz/vim-signify
