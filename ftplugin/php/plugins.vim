@@ -16,10 +16,4 @@ packadd php.vim
 
 packadd phpcomplete.vim
 
-" SUPERTAB:
-" {{{
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-" }}}
-packadd supertab
-
 packadd vdebug

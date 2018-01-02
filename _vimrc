@@ -234,5 +234,4 @@ let g:startify_fortune_use_unicode = 1
 " {{{
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
-highlight Folded    ctermbg=4
 " }}}
