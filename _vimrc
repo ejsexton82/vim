@@ -1,6 +1,7 @@
 " STANDARD VIM CONFIGURATION:
 " {{{
 set nocompatible             " Make Vim stop acting like Vi
+set lazyredraw               " Don't redraw during macros/commands
 
 syntax enable                " Enable syntax highlighting
 filetype plugin indent on    " Enable file type plugins and indenting
