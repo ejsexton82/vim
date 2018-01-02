@@ -29,7 +29,7 @@ set smartcase                " ...except when there are capital letters
 set laststatus=2             " Make sure the status line is displayed
 
 set statusline=
-set statusline+=%#SpellLocal#
+set statusline+=%#Todo#
 set statusline+=%h                           " Help buffer flag
 set statusline+=%q                           " Quickfix list buffer flag
 set statusline+=%{SignifyStatus()}           " Signify Status
@@ -39,8 +39,6 @@ set statusline+=\ %f                         " File path
 set statusline+=%m                           " Modified
 set statusline+=%=                           " Right Align
 set statusline+=%y\                          " filetype
-
-set statusline+=%#SpellLocal#
 set statusline+=\ %{empty(&fenc)?&enc:&fenc} " File Encoding
 set statusline+=[%{&ff}]\                    " File Format
 
@@ -189,7 +187,6 @@ vnoremap > >gv
 
 " SIGNIFY:
 " {{{
-let g:signify_sign_change="~"
 highlight SignColumn        ctermbg=None
 highlight SignifySignAdd    ctermbg=None ctermfg=119
 highlight SignifySignDelete ctermbg=None ctermfg=167
@@ -202,7 +199,7 @@ function! SignifyStatus()
     let l:sy = ''
     for [flag, flagCount] in [
                 \   [exists("g:signify_sign_add")?g:signify_sign_add:'+', added],
-                \   [exists("g:signify_sign_change")?g:signify_sign_change:'!', modified],
+                \   [exists("g:signify_sign_change")?g:signify_sign_change:'~', modified],
                 \   [exists("g:signify_sign_delete")?g:signify_sign_delete:'-', removed]
                 \ ]
         if flagCount > 0
