@@ -100,8 +100,9 @@ if !has('gui_running')
     nnoremap <Esc>[63~ <C-Y>
 endif
 
-
-" ACK:
+""
+" ACK
+"
 cnoreabbrev ack Ack
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'

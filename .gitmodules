@@ -61,9 +61,6 @@
 [submodule "pack/vendor/opt/indentLine"]
 	path = pack/vendor/opt/indentLine
 	url = git://github.com/Yggdroot/indentLine
-[submodule "pack/vendor/opt/vim-autoclose"]
-	path = pack/vendor/opt/vim-autoclose
-	url = git://github.com/Townk/vim-autoclose
 [submodule "pack/vendor/start/vim-abolish"]
 	path = pack/vendor/start/vim-abolish
 	url = git://github.com/tpope/vim-abolish
