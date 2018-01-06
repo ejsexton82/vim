@@ -8,10 +8,6 @@ let g:loaded_ftplugin_php_plugins=1
 source $HOME/vimfiles/ftplugin/plugins.vim
 source $HOME/vimfiles/ftplugin/javascript/plugins.vim
 
-" PHP VIM:
-" {{{
-let php_folding = 1
-" }}}
 packadd php.vim
 
 packadd phpcomplete.vim

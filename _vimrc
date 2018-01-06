@@ -1,5 +1,4 @@
 " STANDARD VIM CONFIGURATION:
-" {{{
 set nocompatible             " Make Vim stop acting like Vi
 set lazyredraw               " Don't redraw during macros/commands
 
@@ -9,9 +8,13 @@ filetype plugin indent on    " Enable file type plugins and indenting
 set encoding=UTF-8           " Use UTF-8 encoding
 set fileformats=unix,dos,mac " Create new files using unix(LF) file format
 
-set omnifunc=syntaxcomplete#Complete
-set completeopt=longest,menuone " Show full completion menu, even with one entry
-set pumheight=15             " Completion menu height
+set autoindent                 " Maintain the current indent on the next line
+set backspace=indent,eol,start " Delete newlines and start of insert
+set smarttab                   " Delete tabs
+
+set omnifunc=syntaxcomplete#Complete " Default built-in omni completion
+set completeopt=longest,menuone      " Show full completion menu, even with one entry
+set pumheight=15                     " Completion menu height
 
 set sidescrolloff=3          " Keep 3 lines left/right
 set scrolloff=3              " Keep 3 lines above/below
@@ -20,7 +23,7 @@ set number                   " Show current line number
 set relativenumber           " Show relative line numbers (good for movements)
 set colorcolumn=80           " Show guide column at 80 characters
 
-set foldmethod=marker        " Automatically fold default foldmarker
+" set foldmethod=marker        " Automatically fold default foldmarker
 
 set gdefault                 " Replace globally (/g) by default
 set incsearch                " Incremental search highlighting
@@ -67,10 +70,14 @@ set formatoptions+=j        " Sane line join formatting
 match ErrorMsg '\%>120v.\+' " Highlight lines >120 characters
 match ErrorMsg '\s\+$'      " Highlight trailing whitespace
 
-" }}}
+" Enable persistent undos
+if has('persistent_undo')
+    let &undodir = expand($HOME . '/vimfiles/undo')
+    silent call mkdir(&undodir, 'p')
+    set undofile
+endif
 
 " CONEMU CONFIGURATION:
-" {{{
 if !has('gui_running')
     set term=xterm
 
@@ -90,20 +97,18 @@ if !has('gui_running')
     nnoremap <Esc>[62~ <C-E>
     nnoremap <Esc>[63~ <C-Y>
 endif
-" }}}
+
 
 " ACK:
-" {{{
 cnoreabbrev ack Ack
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
 elseif executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
-" }}}
+
 
 " FZF: Better than Ctrl-P! (but only if it's installed)
-" {{{
 if executable('fzf')
     packadd! fzf
     packadd! fzf.vim
@@ -147,20 +152,18 @@ if executable('fzf')
 else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
-" }}}
+
 
 " RIPGREP: Better than Grep! (but only if it's installed)
-" {{{
 if executable("rg")
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
-" }}}
+
 
 " SHORTCUTS:
-" {{{
 " Insert mode shortcuts
-imap ii <Esc>
+inoremap ii <Esc>
 
 " Tag shortcuts
 command! MakeTags !ctags -R .
@@ -174,20 +177,12 @@ vmap <C-x> "*d
 vmap <C-c> "*y
 vmap <C-v> "*p
 
-" Select All
-nnoremap <C-a> ggVG
-
-" Save buffers
-map  <C-s> <Esc>:w<CR>
-nmap <C-s> :w<CR>
-
 " Visual Mode
 vnoremap < <gv
 vnoremap > >gv
-" }}}
+
 
 " SIGNIFY:
-" {{{
 highlight SignColumn        ctermbg=None
 highlight SignifySignAdd    ctermbg=None ctermfg=119
 highlight SignifySignDelete ctermbg=None ctermfg=167
@@ -217,21 +212,23 @@ function! SignifyStatus()
     endif
 endfunction
 call SignifyStatus()
-" }}}
+
 
 " STARTIFY:
-" {{{
 let g:startify_session_persistence = 1
+let g:startify_bookmarks = [
+            \   '~/Documents/AutoHotKey.ahk'
+            \ ]
 let g:startify_list_order          = [
             \   ['Sessions'], 'sessions',
+            \   ['Bookmarks'], 'bookmarks',
             \   ['Recent Files'], 'files',
             \   ['Commands'], 'commands'
             \]
 let g:startify_fortune_use_unicode = 1
-" }}}
+
 
 " THEME:
-" {{{
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
-" }}}
+
