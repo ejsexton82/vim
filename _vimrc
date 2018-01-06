@@ -65,6 +65,20 @@ set wildignore+=*.gif
 set wildignore+=*.png
 set wildignore+=*.svg
 
+" Set vimgrep command
+if executable("rg")
+    " Use RipGrep if it is installed
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepprg+=\ --ignore-file\ .gitignore\ --ignore-file\ .hgignore
+    set grepprg+=\ --glob\ !*.ico
+    set grepprg+=\ --glob\ !*.png
+    set grepprg+=\ --glob\ !*.gif
+    set grepprg+=\ --glob\ !*.jpg\ --glob\ !*.jpeg\ --glob\ !*.jpe
+    set grepprg+=\ --glob\ !*.ttf\ --glob\ !*.eot
+    set grepprg+=\ --glob\ !*.lock
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
 set formatoptions+=j        " Sane line join formatting
 
 match ErrorMsg '\%>120v.\+' " Highlight lines >120 characters
@@ -104,12 +118,9 @@ endif
 " ACK
 "
 cnoreabbrev ack Ack
-if executable('rg')
-    let g:ackprg = 'rg --vimgrep --no-heading'
-elseif executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
 
+" Have Ack use whatever vimgrep is using
+let g:ackprg=&grepprg
 
 " FZF: Better than Ctrl-P! (but only if it's installed)
 if executable('fzf')
@@ -155,14 +166,6 @@ if executable('fzf')
 else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
-
-
-" RIPGREP: Better than Grep! (but only if it's installed)
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-
 
 " SHORTCUTS:
 " Insert mode shortcuts
@@ -219,6 +222,7 @@ call SignifyStatus()
 
 " STARTIFY:
 let g:startify_session_persistence = 1
+let g:startify_files_number = 5
 let g:startify_bookmarks = [
             \   '~/Documents/AutoHotKey.ahk'
             \ ]
