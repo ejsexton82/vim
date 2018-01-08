@@ -68,7 +68,7 @@ set wildignore+=*.svg
 " Set vimgrep command
 if executable("rg")
     " Use RipGrep if it is installed
-    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepprg=rg\ --vimgrep\ --no-heading\ --no-messages
     set grepprg+=\ --ignore-file\ .gitignore\ --ignore-file\ .hgignore
     set grepprg+=\ --glob\ !*.ico
     set grepprg+=\ --glob\ !*.png
