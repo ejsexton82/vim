@@ -61,3 +61,6 @@
 [submodule "pack/vendor/start/vim-abolish"]
 	path = pack/vendor/start/vim-abolish
 	url = git://github.com/tpope/vim-abolish
+[submodule "pack/vendor/opt/vim-markdown"]
+	path = pack/vendor/start/vim-markdown
+	url = git://github.com/plasticboy/vim-markdown
