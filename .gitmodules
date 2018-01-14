@@ -64,3 +64,6 @@
 [submodule "pack/vendor/start/vim-qf"]
 	path = pack/vendor/start/vim-qf
 	url = git://github.com/romainl/vim-qf
+[submodule "pack/vendor/start/vim-sneak"]
+	path = pack/vendor/start/vim-sneak
+	url = git://github.com/justinmk/vim-sneak
