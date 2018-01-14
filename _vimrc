@@ -70,6 +70,7 @@ set wildignore+=*.ttf,*.eot,*.woff,*.woff2
 set wildignore+=*.pyc
 
 " Set vimgrep command
+cnoreabbrev grep silent grep
 if executable("rg")
     " Use RipGrep if it is installed
     let rg_wildignore=substitute(substitute(&wildignore, '*', '--glob !*', 'g'), ',', ' ', 'g')
@@ -114,14 +115,6 @@ if !has('gui_running')
     nnoremap <Esc>[63~ <C-Y>
 endif
 
-""
-" ACK
-"
-cnoreabbrev ack Ack
-
-" Have Ack use whatever vimgrep is using
-let g:ackprg=&grepprg
-
 " FZF: Better than Ctrl-P! (but only if it's installed)
 if executable('fzf')
     packadd! fzf
@@ -159,6 +152,9 @@ if executable('fzf')
 else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
+
+" QF:
+let g:qf_auto_quit = 0
 
 " SHORTCUTS:
 " Insert mode shortcuts
