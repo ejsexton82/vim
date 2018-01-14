@@ -4,9 +4,6 @@
 [submodule "pack/vendor/start/fzf.vim"]
 	path = pack/vendor/opt/fzf.vim
 	url = git://github.com/junegunn/fzf.vim
-[submodule "pack/vendor/opt/tabular"]
-	path = pack/vendor/start/tabular
-	url = git://github.com/godlygeek/tabular
 [submodule "pack/vendor/opt/vim-commentary"]
 	path = pack/vendor/opt/vim-commentary
 	url = git://github.com/tpope/vim-commentary
@@ -64,3 +61,6 @@
 [submodule "pack/vendor/opt/vim-markdown"]
 	path = pack/vendor/start/vim-markdown
 	url = git://github.com/plasticboy/vim-markdown
+[submodule "pack/vendor/start/vim-lion"]
+	path = pack/vendor/start/vim-lion
+	url = git://github.com/tommcdo/vim-lion
