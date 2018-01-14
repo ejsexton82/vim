@@ -55,27 +55,27 @@ set noswapfile               " Don't need swap files
 
 set path+=**                 " Search subfolders with find tab completion
 set wildmenu                 " Displays all matches for tab completion
-set wildignore=*.swp,*.orig  " Basic file types to ignore with find tab completion
+set wildignore=              " Basic file types to ignore with find tab completion
+set wildignore+=*.bak
+set wildignore+=*.gif
+set wildignore+=*.ico
+set wildignore+=*.jpg,*.jpeg,*.jpe
 set wildignore+=*.lock
 set wildignore+=*.phar
-set wildignore+=*.bak
-set wildignore+=*.ico
-set wildignore+=*.jpg,*.jpeg
-set wildignore+=*.gif
 set wildignore+=*.png
+set wildignore+=*.pyc
 set wildignore+=*.svg
+set wildignore+=*.swp,*.orig
+set wildignore+=*.ttf,*.eot,*.woff,*.woff2
+set wildignore+=*.pyc
 
 " Set vimgrep command
 if executable("rg")
     " Use RipGrep if it is installed
-    set grepprg=rg\ --vimgrep\ --no-heading\ --no-messages
-    set grepprg+=\ --ignore-file\ .gitignore\ --ignore-file\ .hgignore
-    set grepprg+=\ --glob\ !*.ico
-    set grepprg+=\ --glob\ !*.png
-    set grepprg+=\ --glob\ !*.gif
-    set grepprg+=\ --glob\ !*.jpg\ --glob\ !*.jpeg\ --glob\ !*.jpe
-    set grepprg+=\ --glob\ !*.ttf\ --glob\ !*.eot
-    set grepprg+=\ --glob\ !*.lock
+    let rg_wildignore=substitute(substitute(&wildignore, '*', '--glob !*', 'g'), ',', ' ', 'g')
+    let rg_ignore=" --ignore-file .gitignore --ignore-file .hgignore " . rg_wildignore
+    let rg_options=" --no-heading --no-messages --ignore-case"
+    let &grepprg="rg --vimgrep" . rg_options . rg_ignore
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
@@ -130,20 +130,13 @@ if executable('fzf')
 
     " WITH RG: Even better than FZF! (but only if it's installed)
     if executable('rg')
-        let $FZF_DEFAULT_COMMAND = 'rg --files ' .
-                    \ '--ignore-file .gitignore --ignore-file .hgignore ' .
-                    \ '--glob !*.ico ' .
-                    \ '--glob !*.png ' .
-                    \ '--glob !*.gif ' .
-                    \ '--glob !*.jpg --glob !*.jpeg --glob !*.jpe ' .
-                    \ '--glob !*.ttf --glob !*.eot ' .
-                    \ '--glob !*.lock '
+        let $FZF_DEFAULT_COMMAND = 'rg --files ' . rg_options . rg_ignore
 
         " Use RipGrep with FZF
         cnoreabbrev rg Rg
         command! -bang -nargs=* Rg
                     \ call fzf#vim#grep(
-                    \   'rg --column --line-number --no-heading --color=always '.<q-args>, 1,
+                    \   'rg --column --line-number --color=always' . rg_options . rg_ignore . ' ' .<q-args>, 1,
                     \   <bang>0 ? fzf#vim#with_preview('up:60%')
                     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
                     \   <bang>0)
