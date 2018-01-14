@@ -32,23 +32,14 @@ set smartcase                " ...except when there are capital letters
 
 set laststatus=2             " Make sure the status line is displayed
 
-set statusline=
-set statusline+=%#Todo#
-set statusline+=%h                           " Help buffer flag
-set statusline+=%q                           " Quickfix list buffer flag
-set statusline+=%{SignifyStatus()}           " Signify Status
-
-set statusline+=%*
-set statusline+=\ %f                         " File path
-set statusline+=%m                           " Modified
-set statusline+=%=                           " Right Align
-set statusline+=%y\                          " filetype
-set statusline+=\ %{empty(&fenc)?&enc:&fenc} " File Encoding
-set statusline+=[%{&ff}]\                    " File Format
-
-set statusline+=%#Search#
-set statusline+=\ %p%%\ \                    " Percentage of lines
-set statusline+=%l/%L\ ln\ :\ %c\            " Line Number
+set statusline=\                               " Custom status line
+set statusline+=%(%h%q%w\ %)                   " Help/Quickfix/Preview window
+set statusline+=%F                             " File path
+set statusline+=%(\ %m%)                       " Modified
+set statusline+=%=                             " Right Align
+set statusline+=%y                             " filetype
+set statusline+=\ [%{empty(&fenc)?&enc:&fenc}] " File Encoding
+set statusline+=\ [%{&ff}]\                    " File Format
 
 set nobackup                 " Don't need backup files
 set noswapfile               " Don't need swap files
@@ -153,6 +144,9 @@ else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
 
+" LION:
+let g:lion_squeeze_spaces = 1
+
 " QF:
 let g:qf_auto_quit = 0
 
@@ -176,38 +170,11 @@ vmap <C-v> "*p
 vnoremap < <gv
 vnoremap > >gv
 
-
 " SIGNIFY:
 highlight SignColumn        ctermbg=None
 highlight SignifySignAdd    ctermbg=None ctermfg=119
 highlight SignifySignDelete ctermbg=None ctermfg=167
 highlight SignifySignChange ctermbg=None ctermfg=227
-function! SignifyStatus()
-    if !exists("g:loaded_signify")
-        return ''
-    endif
-    let [added, modified, removed] = sy#repo#get_stats()
-    let l:sy = ''
-    for [flag, flagCount] in [
-                \   [exists("g:signify_sign_add")?g:signify_sign_add:'+', added],
-                \   [exists("g:signify_sign_change")?g:signify_sign_change:'~', modified],
-                \   [exists("g:signify_sign_delete")?g:signify_sign_delete:'-', removed]
-                \ ]
-        if flagCount > 0
-            if !empty(l:sy)
-                let l:sy .= ' '
-            endif
-            let l:sy .= printf('%s%d', flag, flagCount)
-        endif
-    endfor
-    if !empty(l:sy)
-        return printf('  %s ', l:sy)
-    else
-        return ''
-    endif
-endfunction
-call SignifyStatus()
-
 
 " STARTIFY:
 let g:startify_session_persistence = 1
@@ -223,8 +190,6 @@ let g:startify_list_order          = [
             \]
 let g:startify_fortune_use_unicode = 1
 
-
 " THEME:
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
-
