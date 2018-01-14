@@ -1,36 +1,35 @@
 " STANDARD VIM CONFIGURATION:
-set nocompatible             " Make Vim stop acting like Vi
-set lazyredraw               " Don't redraw during macros/commands
 
-syntax enable                " Enable syntax highlighting
-filetype plugin indent on    " Enable file type plugins and indenting
+set nocompatible                     " Make Vim stop acting like Vi
+set lazyredraw                       " Don't redraw during macros/commands
 
-set encoding=UTF-8           " Use UTF-8 encoding
-set fileformats=unix,dos,mac " Create new files using unix(LF) file format
+syntax enable                        " Enable syntax highlighting
+filetype plugin indent on            " Enable file type plugins and indenting
 
-set autoindent                 " Maintain the current indent on the next line
-set backspace=indent,eol,start " Delete newlines and start of insert
-set smarttab                   " Delete tabs
+set encoding=UTF-8                   " Use UTF-8 encoding
+set fileformats=unix,dos,mac         " Create new files using unix(LF) file format
+
+set autoindent                       " Maintain the current indent on the next line
+set backspace=indent,eol,start       " Delete newlines and start of insert
+set smarttab                         " Delete tabs
 
 set omnifunc=syntaxcomplete#Complete " Default built-in omni completion
 set completeopt=longest,menuone      " Show full completion menu, even with one entry
 set pumheight=15                     " Completion menu height
 
-set sidescrolloff=3          " Keep 3 lines left/right
-set scrolloff=3              " Keep 3 lines above/below
+set sidescrolloff=3                  " Keep 3 lines left/right
+set scrolloff=3                      " Keep 3 lines above/below
 
-set number                   " Show current line number
-set relativenumber           " Show relative line numbers (good for movements)
-set colorcolumn=80           " Show guide column at 80 characters
+set number                           " Show current line number
+set relativenumber                   " Show relative line numbers (good for movements)
+set colorcolumn=80                   " Show guide column at 80 characters
 
-" set foldmethod=marker        " Automatically fold default foldmarker
+set gdefault                         " Replace globally (/g) by default
+set incsearch                        " Incremental search highlighting
+set ignorecase                       " Ignore case while searching...
+set smartcase                        " ...except when there are capital letters
 
-set gdefault                 " Replace globally (/g) by default
-set incsearch                " Incremental search highlighting
-set ignorecase               " Ignore case while searching...
-set smartcase                " ...except when there are capital letters
-
-set laststatus=2             " Make sure the status line is displayed
+set laststatus=2                     " Make sure the status line is displayed
 
 set statusline=\                               " Custom status line
 set statusline+=%(%h%q%w\ %)                   " Help/Quickfix/Preview window
