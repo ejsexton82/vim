@@ -1,6 +1,5 @@
 " STANDARD VIM CONFIGURATION:
 
-set nocompatible                     " Make Vim stop acting like Vi
 set lazyredraw                       " Don't redraw during macros/commands
 
 syntax enable                        " Enable syntax highlighting
@@ -99,10 +98,10 @@ if !has('gui_running')
 
     " Fix the Mouse Scroll Wheel
     set mouse=a
-    inoremap <Esc>[62~ <C-X><C-E>
-    inoremap <Esc>[63~ <C-X><C-Y>
-    nnoremap <Esc>[62~ <C-E>
-    nnoremap <Esc>[63~ <C-Y>
+    " inoremap <Esc>[62~ <C-X><C-E>
+    " inoremap <Esc>[63~ <C-X><C-Y>
+    " nnoremap <Esc>[62~ <C-E>
+    " nnoremap <Esc>[63~ <C-Y>
 endif
 
 " FZF: Better than Ctrl-P! (but only if it's installed)
@@ -171,11 +170,11 @@ vnoremap > >gv
 
 " SIGNIFY:
 highlight SignColumn        ctermbg=None
-highlight SignifySignAdd    ctermbg=None ctermfg=119
-highlight SignifySignDelete ctermbg=None ctermfg=167
-highlight SignifySignChange ctermbg=None ctermfg=227
+highlight SignifySignAdd    ctermbg=None ctermfg=green
+highlight SignifySignDelete ctermbg=None ctermfg=red
+highlight SignifySignChange ctermbg=None ctermfg=yellow
 
-" STARTIFY:
+" STARTIFY: arst
 let g:startify_session_persistence = 1
 let g:startify_files_number = 5
 let g:startify_bookmarks = [
@@ -192,3 +191,6 @@ let g:startify_fortune_use_unicode = 1
 " THEME:
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
+if !has('gui_running')
+    colorscheme conemu
+endif
