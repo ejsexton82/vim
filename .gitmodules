@@ -67,3 +67,6 @@
 [submodule "pack/vendor/start/vim-sneak"]
 	path = pack/vendor/start/vim-sneak
 	url = git://github.com/justinmk/vim-sneak
+[submodule "pack/vendor/opt/dracula"]
+	path = pack/vendor/opt/dracula
+	url = git://github.com/dracula/vim
