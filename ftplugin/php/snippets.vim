@@ -21,5 +21,6 @@ inoremap TT<tab> TT::app()->
 inoremap TTbu<tab> TT::app()->getBaseUrl(true)
 inoremap TTbp<tab> TT::app()->basePath
 inoremap TTp<tab> TT::app()->params
+inoremap TTu<tab> TT::app()->user->
 inoremap vd<tab>  var_dump();<Left><Left>
 inoremap vde<tab> var_dump(); exit;<left><left><left><left><left><left><left><left>
