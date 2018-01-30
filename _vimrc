@@ -57,13 +57,15 @@ set wildignore+=*.svg
 set wildignore+=*.swp,*.orig
 set wildignore+=*.ttf,*.eot,*.woff,*.woff2
 set wildignore+=*.pyc
+set wildignore+=.git
 
 " Set vimgrep command
 cnoreabbrev grep silent grep
 if executable("rg")
     " Use RipGrep if it is installed
-    let rg_wildignore=substitute(substitute(&wildignore, '*', '--glob !*', 'g'), ',', ' ', 'g')
-    let rg_ignore=" --ignore-file .gitignore --ignore-file .hgignore " . rg_wildignore
+    let rg_wildignore=" --glob !" . substitute(&wildignore, ',', ' --glob !', 'g')
+    " let rg_ignore=" --ignore-file .gitignore --ignore-file .hgignore " . rg_wildignore
+    let rg_ignore=" --no-ignore " . rg_wildignore
     let rg_options=" --no-heading --no-messages --ignore-case"
     let &grepprg="rg --vimgrep" . rg_options . rg_ignore
     set grepformat=%f:%l:%c:%m,%f:%l:%m
