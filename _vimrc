@@ -178,17 +178,15 @@ highlight SignifySignChange ctermbg=None ctermfg=yellow
 
 " STARTIFY: arst
 let g:startify_session_persistence = 1
-let g:startify_files_number = 5
 let g:startify_bookmarks = [
             \   '~/Documents/AutoHotKey.ahk'
             \ ]
 let g:startify_list_order          = [
             \   ['Sessions'], 'sessions',
-            \   ['Bookmarks'], 'bookmarks',
-            \   ['Recent Files'], 'files',
-            \   ['Commands'], 'commands'
+            \   ['Bookmarks'], 'bookmarks'
             \]
 let g:startify_fortune_use_unicode = 1
+let g:startify_custom_header = 'startify#fortune#boxed()'
 
 " THEME:
 set fillchars=vert:│
