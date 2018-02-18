@@ -1,10 +1,10 @@
 " NORMAL:
-nnoremap ,Controller   :-1read $HOME/vimfiles/snippets/php/Controller.php<CR>:%s/CLASS//<Left>
-nnoremap ,Model        :-1read $HOME/vimfiles/snippets/php/Model.php<CR>:%s/CLASS//<Left>
-nnoremap ,TTController :-1read $HOME/vimfiles/snippets/php/TTController.php<CR>:%s/CLASS//<Left>
-nnoremap ,TTModel      :-1read $HOME/vimfiles/snippets/php/TTModel.php<CR>:%s/CLASS//<Left>
-nnoremap ,TTTrait      :-1read $HOME/vimfiles/snippets/php/TTTrait.php<CR>:%s/CLASS//<Left>
-nnoremap ,TestCase     :-1read $HOME/vimfiles/snippets/php/TestCase.php<CR>:%s/CLASS//<Left>
+nnoremap ,Controller   :-1read $HOME/.vim/snippets/php/Controller.php<CR>:%s/CLASS//<Left>
+nnoremap ,Model        :-1read $HOME/.vim/snippets/php/Model.php<CR>:%s/CLASS//<Left>
+nnoremap ,TTController :-1read $HOME/.vim/snippets/php/TTController.php<CR>:%s/CLASS//<Left>
+nnoremap ,TTModel      :-1read $HOME/.vim/snippets/php/TTModel.php<CR>:%s/CLASS//<Left>
+nnoremap ,TTTrait      :-1read $HOME/.vim/snippets/php/TTTrait.php<CR>:%s/CLASS//<Left>
+nnoremap ,TestCase     :-1read $HOME/.vim/snippets/php/TestCase.php<CR>:%s/CLASS//<Left>
 
 " INSERT:
 iabbrev pubf public function

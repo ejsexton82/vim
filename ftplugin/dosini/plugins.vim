@@ -3,4 +3,4 @@ if exists('g:loaded_ftplugin_dosini_plugins')
 endif
 let g:loaded_ftplugin_dosini_plugins = 1
 
-source $HOME/vimfiles/ftplugin/plugins.vim
+source $HOME/.vim/ftplugin/plugins.vim
