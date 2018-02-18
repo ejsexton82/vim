@@ -30,7 +30,7 @@ packadd ale
 
 " INDENTLINE:
 let g:indentLine_char = '┊'
-packadd indentLine
+" packadd indentLine
 
 " TAGBAR:
 nmap <F8> :TagbarToggle<CR>
