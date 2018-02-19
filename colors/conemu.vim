@@ -1,5 +1,4 @@
 highlight SpecialKey     term=bold ctermfg=9 guifg=Cyan
-highlight EndOfBuffer    links to NonText
 highlight NonText        term=bold ctermfg=9 gui=bold guifg=Blue
 highlight Directory      term=bold ctermfg=11 guifg=Cyan
 highlight ErrorMsg       term=standout ctermfg=15 ctermbg=4 guifg=White guibg=Red
@@ -12,7 +11,6 @@ highlight CursorLineNr   term=bold cterm=bold ctermfg=11 gui=bold guifg=Yellow
 highlight Question       term=standout ctermfg=10 gui=bold guifg=Green
 highlight StatusLine     term=bold,reverse cterm=bold,reverse gui=bold,reverse
 highlight StatusLineNC   term=reverse cterm=reverse gui=reverse
-highlight VertSplit      cleared
 highlight Title          term=bold ctermfg=13 gui=bold guifg=Magenta
 highlight Visual         term=reverse ctermbg=8 guibg=DarkGrey
 highlight VisualNOS      term=bold,underline cterm=bold,underline gui=bold,underline
