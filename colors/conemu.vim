@@ -6,7 +6,7 @@ highlight IncSearch      term=reverse cterm=reverse gui=reverse
 highlight Search         term=reverse ctermfg=0 ctermbg=14 guifg=Black guibg=Yellow
 highlight MoreMsg        term=bold ctermfg=10 gui=bold guifg=SeaGreen
 highlight ModeMsg        term=bold cterm=bold gui=bold
-highlight LineNr         term=underline ctermfg=0 ctermbg=4 guifg=Yellow
+highlight LineNr         term=underline ctermfg=DarkCyan ctermbg=4 guifg=Yellow
 highlight CursorLineNr   term=bold cterm=bold ctermfg=11 gui=bold guifg=Yellow
 highlight Question       term=standout ctermfg=10 gui=bold guifg=Green
 highlight StatusLine     term=bold,reverse cterm=bold,reverse gui=bold,reverse
@@ -55,7 +55,7 @@ highlight SignifySignDelete ctermfg=9
 highlight SignifySignChange ctermfg=11
 highlight ALESignColumnWithoutErrors term=standout ctermfg=11 guifg=Cyan guibg=Grey
 " highlight ErrorMsg term=reverse ctermbg=red
-highlight LineNr   ctermfg=black ctermbg=darkblue
-highlight Folded ctermbg=darkblue
-highlight Error  ctermbg=red
-highlight CursorLineNr cterm=bold ctermfg=yellow
+" highlight LineNr   ctermfg=black ctermbg=darkblue
+" highlight Folded ctermbg=darkblue
+" highlight Error  ctermbg=red
+" highlight CursorLineNr cterm=bold ctermfg=yellow
