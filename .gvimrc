@@ -1,4 +1,4 @@
-source $HOME/.vim/_vimrc
+source $HOME/.vim/.vimrc
 
 " FULLSCREEN:
 " Automatically switch to fullscreen on load
