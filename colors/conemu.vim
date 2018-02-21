@@ -22,7 +22,7 @@ highlight DiffAdd        term=bold ctermbg=1 guibg=DarkBlue
 highlight DiffChange     term=bold ctermbg=5 guibg=DarkMagenta
 highlight DiffDelete     term=bold ctermfg=9 ctermbg=3 gui=bold guifg=Blue guibg=DarkCyan
 highlight DiffText       term=reverse cterm=bold ctermbg=12 gui=bold guibg=Red
-highlight SignColumn     term=standout ctermfg=11 guifg=Cyan guibg=Grey
+highlight SignColumn     term=standout ctermfg=11 guifg=Cyan ctermbg=0 guibg=Grey
 highlight Conceal        ctermfg=7 ctermbg=8 guifg=LightGrey guibg=DarkGrey
 highlight SpellBad       term=reverse ctermbg=12 gui=undercurl guisp=Red
 highlight SpellCap       term=reverse ctermbg=9 gui=undercurl guisp=Blue
@@ -36,7 +36,7 @@ highlight TabLine        term=underline cterm=underline ctermfg=15 ctermbg=8 gui
 highlight TabLineSel     term=bold cterm=bold gui=bold
 highlight TabLineFill    term=reverse cterm=reverse gui=reverse
 highlight CursorColumn   term=reverse ctermbg=8 guibg=Grey40
-highlight CursorLine     term=underline cterm=underline guibg=Grey40
+highlight CursorLine     term=none cterm=none ctermbg=4 guibg=Grey40
 highlight ColorColumn    term=reverse ctermbg=4 guibg=DarkRed
 highlight MatchParen     term=reverse ctermbg=3 guibg=DarkCyan
 highlight Comment        term=bold ctermfg=11 guifg=#80a0ff
