@@ -22,6 +22,7 @@ set scrolloff=3                      " Keep 3 lines above/below
 set number                           " Show current line number
 set relativenumber                   " Show relative line numbers (good for movements)
 set colorcolumn=80                   " Show guide column at 80 characters
+set cursorline                       " Highlight the cursor line
 
 set gdefault                         " Replace globally (/g) by default
 set incsearch                        " Incremental search highlighting
@@ -170,13 +171,7 @@ vmap <C-v> "*p
 vnoremap < <gv
 vnoremap > >gv
 
-" SIGNIFY:
-highlight SignColumn        ctermbg=None
-highlight SignifySignAdd    ctermbg=None ctermfg=green
-highlight SignifySignDelete ctermbg=None ctermfg=red
-highlight SignifySignChange ctermbg=None ctermfg=yellow
-
-" STARTIFY: arst
+" STARTIFY:
 let g:startify_session_persistence = 1
 let g:startify_bookmarks = [
             \   '~/Documents/AutoHotKey.ahk'
@@ -191,6 +186,3 @@ let g:startify_custom_header = 'startify#fortune#boxed()'
 " THEME:
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
-if !has('gui_running')
-    colorscheme conemu
-endif

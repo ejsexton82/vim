@@ -64,12 +64,12 @@
 [submodule "pack/vendor/start/vim-sneak"]
 	path = pack/vendor/start/vim-sneak
 	url = git://github.com/justinmk/vim-sneak
-[submodule "pack/vendor/opt/dracula"]
-	path = pack/vendor/opt/dracula
-	url = git://github.com/dracula/vim
 [submodule "pack/vendor/start/vim-repeat"]
 	path = pack/vendor/start/vim-repeat
 	url = git://github.com/tpope/vim-repeat
 [submodule "pack/vendor/start/VimCompletesMe"]
 	path = pack/vendor/start/VimCompletesMe
 	url = git://github.com/ajh17/VimCompletesMe
+[submodule "pack/vendor/start/vim-dracula"]
+	path = pack/vendor/start/vim-dracula
+	url = git://github.com/crusoexia/vim-dracula
