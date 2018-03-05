@@ -9,4 +9,8 @@ if exists('g:loaded_ftplugin_python_plugins')
 endif
 let g:loaded_ftplugin_python_plugins=1
 
-source $HOME/.vim/ftplugin/plugins.vim
+if has('win32')
+	source $HOME/vimfiles/ftplugin/plugins.vim
+else
+	source $HOME/.vim/ftplugin/plugins.vim
+endif

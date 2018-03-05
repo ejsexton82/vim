@@ -5,8 +5,13 @@ if exists('g:loaded_ftplugin_php_plugins')
 endif
 let g:loaded_ftplugin_php_plugins=1
 
-source $HOME/.vim/ftplugin/plugins.vim
-source $HOME/.vim/ftplugin/javascript/plugins.vim
+if has('win32')
+	source $HOME/vimfiles/ftplugin/plugins.vim
+	source $HOME/vimfiles/ftplugin/javascript/plugins.vim
+else
+	source $HOME/.vim/ftplugin/plugins.vim
+	source $HOME/.vim/ftplugin/javascript/plugins.vim
+endif
 
 packadd php.vim
 

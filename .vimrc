@@ -79,7 +79,11 @@ match ErrorMsg '\s\+$'      " Highlight trailing whitespace
 
 " Enable persistent undos
 if has('persistent_undo')
-    let &undodir = expand($HOME . '/.vim/undo')
+	if has('win32')
+		let &undodir = expand($HOME . '/vimfiles/undo')
+	else
+		let &undodir = expand($HOME . '/.vim/undo')
+	endif
     if !isdirectory(&undodir)
         silent call mkdir(&undodir, 'p')
     endif
