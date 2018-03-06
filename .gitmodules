@@ -70,6 +70,6 @@
 [submodule "pack/vendor/start/VimCompletesMe"]
 	path = pack/vendor/start/VimCompletesMe
 	url = git://github.com/ajh17/VimCompletesMe
-[submodule "pack/vendor/start/vim-dracula"]
-	path = pack/vendor/start/vim-dracula
-	url = git://github.com/crusoexia/vim-dracula
+[submodule "pack/vendor/start/dracula"]
+	path = pack/vendor/start/dracula
+	url = git://github.com/dracula/vim
