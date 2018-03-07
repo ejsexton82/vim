@@ -1,20 +1,24 @@
-source $HOME/.vim/.vimrc
+if has('win32')
+	source $HOME/vimfiles/.vimrc
+else
+	source $HOME/.vim/.vimrc
+endif
 
 " FULLSCREEN:
 " Automatically switch to fullscreen on load
-autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
-autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "SetAlpha", 240)
+" autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
+" autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "SetAlpha", 240)
 
 " Hide some things we don't want
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-set guioptions-=e
+" set guioptions-=m
+" set guioptions-=T
+" set guioptions-=r
+" set guioptions-=L
+" set guioptions-=e
 
 " Map some keys to enable fullscreen
-noremap  <C-F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
-nnoremap <C-F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
+" noremap  <C-F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
+" nnoremap <C-F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen",0)<CR>
 
 " TABS:
 " Tab Commands
