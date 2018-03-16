@@ -73,3 +73,6 @@
 [submodule "pack/vendor/start/dracula"]
 	path = pack/vendor/start/dracula
 	url = git://github.com/dracula/vim
+[submodule "pack/vendor/start/indentLine"]
+	path = pack/vendor/start/indentLine
+	url = git://github.com/Yggdroot/indentLine
