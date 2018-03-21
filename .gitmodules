@@ -79,3 +79,6 @@
 [submodule "pack/vendor/start/vim-sort-motion"]
 	path = pack/vendor/start/vim-sort-motion
 	url = git://github.com/christoomey/vim-sort-motion
+[submodule "pack/vendor/start/tabular"]
+	path = pack/vendor/start/tabular
+	url = git://github.com/godlygeek/tabular
