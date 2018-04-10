@@ -82,3 +82,15 @@
 [submodule "pack/vendor/start/tabular"]
 	path = pack/vendor/start/tabular
 	url = git://github.com/godlygeek/tabular
+[submodule "pack/vendor/opt/phpactor"]
+	path = pack/vendor/opt/phpactor
+	url = git://github.com/phpactor/phpactor
+[submodule "pack/vendor/opt/nvim-completion-manager"]
+	path = pack/vendor/opt/nvim-completion-manager
+	url = git://github.com/roxma/nvim-completion-manager
+[submodule "pack/vendor/opt/ncm-phpactor"]
+	path = pack/vendor/opt/ncm-phpactor
+	url = git://github.com/roxma/ncm-phpactor
+[submodule "pack/vendor/opt/phpfolding.vim"]
+	path = pack/vendor/opt/phpfolding.vim
+	url = git://github.com/rayburgemeestre/phpfolding.vim

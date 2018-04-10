@@ -1,4 +1,6 @@
-setlocal omnifunc=phpcomplete#CompletePHP
+if !has('nvim') || !has('python3')
+    setlocal omnifunc=phpcomplete#CompletePHP
+endif
 
 if exists('g:loaded_ftplugin_php_plugins')
     finish
@@ -14,7 +16,15 @@ else
 endif
 
 packadd php.vim
+packadd phpfolding.vim
 
-packadd phpcomplete.vim
+if has('nvim')
+    packadd phpactor
+    if has('python3')
+        packadd ncm-phpactor
+    endif
+else
+    packadd phpcomplete.vim
+endif
 
 packadd vdebug

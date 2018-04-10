@@ -1,5 +1,4 @@
-" STANDARD VIM CONFIGURATION:
-
+" STANDARD VIM CONFIGURATION: {{{
 set lazyredraw                       " Don't redraw during macros/commands
 
 syntax enable                        " Enable syntax highlighting
@@ -89,10 +88,12 @@ if has('persistent_undo')
     endif
     set undofile
 endif
-
-" CONEMU CONFIGURATION:
+" }}}
+" CONEMU: {{{
 if !has('gui_running')
-    set term=xterm
+    if !has('nvim')
+        set term=xterm
+    endif
 
     " Fix the colors
     set t_Co=256
@@ -110,8 +111,8 @@ if !has('gui_running')
     " nnoremap <Esc>[62~ <C-E>
     " nnoremap <Esc>[63~ <C-Y>
 endif
-
-" FZF: Better than Ctrl-P! (but only if it's installed)
+" }}}
+" FZF: Better than Ctrl-P! (but only if it's installed) {{{
 if executable('fzf')
     packadd! fzf
     packadd! fzf.vim
@@ -148,19 +149,28 @@ if executable('fzf')
 else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
-
-" LION:
+" }}}
+" LION: {{{
 let g:lion_squeeze_spaces = 1
+" }}}
+" NVIM COMPLETION MANAGER:{{{
+if has('nvim') && has('python3')
+    packadd nvim-completion-manager
 
-" QF:
+    " Use Tab to select completion
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+endif
+" }}}
+" QF: {{{
 let g:qf_auto_quit = 0
-
-" SIGNIFY:
+" }}}
+" SIGNIFY: {{{
 let g:signify_vcs_cmds = {
             \ 'git': 'git diff --no-color --no-ext-diff -U0 -- %f',
             \ }
-
-" SHORTCUTS:
+" }}}
+" SHORTCUTS: {{{
 " Insert mode shortcuts
 inoremap ii <Esc>
 
@@ -179,8 +189,8 @@ vmap <C-v> "*p
 " Visual Mode
 vnoremap < <gv
 vnoremap > >gv
-
-" STARTIFY:
+" }}}
+" STARTIFY: {{{
 let g:startify_session_persistence = 1
 let g:startify_bookmarks = [
             \   '~/Documents/AutoHotKey.ahk'
@@ -191,7 +201,8 @@ let g:startify_list_order          = [
             \]
 let g:startify_fortune_use_unicode = 1
 let g:startify_custom_header = 'startify#fortune#boxed()'
-
-" THEME:
+" }}}
+" THEME: {{{
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
+" }}}
