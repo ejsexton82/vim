@@ -112,6 +112,13 @@ if !has('gui_running')
     " nnoremap <Esc>[63~ <C-Y>
 endif
 " }}}
+" DEOPLETE: {{{
+let g:deoplete#enable_ad_startup = 1
+if has('nvim')
+    packadd deoplete.nvim
+    autocmd VimEnter * silent UpdateRemotePlugins
+endif
+" }}}
 " FZF: Better than Ctrl-P! (but only if it's installed) {{{
 if executable('fzf')
     packadd! fzf
