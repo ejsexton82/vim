@@ -153,15 +153,6 @@ endif
 " LION: {{{
 let g:lion_squeeze_spaces = 1
 " }}}
-" NVIM COMPLETION MANAGER:{{{
-if has('nvim') && has('python3')
-    packadd nvim-completion-manager
-
-    " Use Tab to select completion
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-endif
-" }}}
 " QF: {{{
 let g:qf_auto_quit = 0
 " }}}

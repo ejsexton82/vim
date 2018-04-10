@@ -20,9 +20,6 @@ packadd phpfolding.vim
 
 if has('nvim')
     packadd phpactor
-    if has('python3')
-        packadd ncm-phpactor
-    endif
 else
     packadd phpcomplete.vim
 endif
