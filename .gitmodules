@@ -88,3 +88,6 @@
 [submodule "pack/vendor/start/vim-fugitive"]
 	path = pack/vendor/start/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive
+[submodule "pack/vendor/opt/vim-php-refactoring-toolbox"]
+	path = pack/vendor/opt/vim-php-refactoring-toolbox
+	url = git://github.com/adoy/vim-php-refactoring-toolbox
