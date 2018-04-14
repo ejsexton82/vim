@@ -113,7 +113,14 @@ if !has('gui_running')
 endif
 " }}}
 " DEOPLETE: {{{
-let g:deoplete#enable_ad_startup = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#padawan#add_parentheses = 1
+" needed for echodoc to work if add_parentheses is 1
+let g:deoplete#skip_chars = ['$']
+let g:deoplete#sources = {}
+" let g:deoplete#sources.php = ['padawan', 'ultisnips', 'tags', 'buffer']
+let g:deoplete#sources.php = ['padawan', 'tags', 'buffer']
+
 if has('nvim')
     packadd deoplete.nvim
     autocmd VimEnter * silent UpdateRemotePlugins
@@ -183,6 +190,10 @@ nnoremap <leader>x :cclose<CR>
 vmap <C-x> "*d
 vmap <C-c> "*y
 vmap <C-v> "*p
+
+" Popup Menu
+inoremap <expr> <TAB> pumvisible() ? "\<c-n>" : "\<TAB>"
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<TAB>"
 
 " Visual Mode
 vnoremap < <gv

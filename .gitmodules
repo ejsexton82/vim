@@ -16,9 +16,6 @@
 [submodule "pack/vendor/start/vim-signify"]
 	path = pack/vendor/start/vim-signify
 	url = git://github.com/mhinz/vim-signify
-[submodule "pack/vendor/start/vim-lawrencium"]
-	path = pack/vendor/start/vim-lawrencium
-	url = git://github.com/ludovicchabant/vim-lawrencium
 [submodule "pack/vendor/opt/vim-javascript"]
 	path = pack/vendor/opt/vim-javascript
 	url = git://github.com/pangloss/vim-javascript
@@ -67,9 +64,6 @@
 [submodule "pack/vendor/start/vim-repeat"]
 	path = pack/vendor/start/vim-repeat
 	url = git://github.com/tpope/vim-repeat
-[submodule "pack/vendor/start/VimCompletesMe"]
-	path = pack/vendor/start/VimCompletesMe
-	url = git://github.com/ajh17/VimCompletesMe
 [submodule "pack/vendor/start/dracula"]
 	path = pack/vendor/start/dracula
 	url = git://github.com/dracula/vim
@@ -82,12 +76,15 @@
 [submodule "pack/vendor/start/tabular"]
 	path = pack/vendor/start/tabular
 	url = git://github.com/godlygeek/tabular
-[submodule "pack/vendor/opt/phpactor"]
-	path = pack/vendor/opt/phpactor
-	url = git://github.com/phpactor/phpactor
 [submodule "pack/vendor/opt/phpfolding.vim"]
 	path = pack/vendor/opt/phpfolding.vim
 	url = git://github.com/rayburgemeestre/phpfolding.vim
 [submodule "pack/vendor/opt/deoplete.nvim"]
 	path = pack/vendor/opt/deoplete.nvim
 	url = git://github.com/Shuogo/deoplete.nvim
+[submodule "pack/vendor/opt/deoplete-padawan"]
+	path = pack/vendor/opt/deoplete-padawan
+	url = git://github.com/padawan-php/deoplete-padawan
+[submodule "pack/vendor/start/vim-fugitive"]
+	path = pack/vendor/start/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive
