@@ -76,9 +76,6 @@
 [submodule "pack/vendor/start/tabular"]
 	path = pack/vendor/start/tabular
 	url = git://github.com/godlygeek/tabular
-[submodule "pack/vendor/opt/phpfolding.vim"]
-	path = pack/vendor/opt/phpfolding.vim
-	url = git://github.com/rayburgemeestre/phpfolding.vim
 [submodule "pack/vendor/opt/deoplete.nvim"]
 	path = pack/vendor/opt/deoplete.nvim
 	url = git://github.com/Shuogo/deoplete.nvim

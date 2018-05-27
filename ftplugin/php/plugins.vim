@@ -11,7 +11,6 @@ endif
 let g:loaded_ftplugin_php_plugins=1
 
 packadd php.vim        " Syntax highlighting
-packadd phpfolding.vim " Method folding
 
 if has('nvim')
     " PADAWAN: {{{
