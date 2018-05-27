@@ -6,4 +6,4 @@ This is my personal Vim configuration.
 
 ## PHP
 
-[] Add PHP Folding
+- [ ] Add PHP Folding
