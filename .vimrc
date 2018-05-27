@@ -1,4 +1,4 @@
-" STANDARD VIM CONFIGURATION: {{{
+" VIM: {{{
 set lazyredraw                       " Don't redraw during macros/commands
 
 syntax enable                        " Enable syntax highlighting
@@ -28,6 +28,9 @@ set incsearch                        " Incremental search highlighting
 set ignorecase                       " Ignore case while searching...
 set smartcase                        " ...except when there are capital letters
 
+set formatoptions+=j        " Sane line join formatting
+" }}}
+" VIM STATUSLINE: {{{
 set laststatus=2                     " Make sure the status line is displayed
 
 set statusline=\                               " Custom status line
@@ -38,16 +41,16 @@ set statusline+=%=                             " Right Align
 set statusline+=%y                             " filetype
 set statusline+=\ [%{empty(&fenc)?&enc:&fenc}] " File Encoding
 set statusline+=\ [%{&ff}]\                    " File Format
-
+" }}}
+" VIM SWAP: {{{
 set nobackup                 " Don't need backup files
 set noswapfile               " Don't need swap files
-
-set formatoptions+=j        " Sane line join formatting
-
+" }}}
+" VIM ERRORMSG: {{{
 match ErrorMsg '\%>120v.\+' " Highlight lines >120 characters
 match ErrorMsg '\s\+$'      " Highlight trailing whitespace
-
-" Enable persistent undos
+" }}}
+" VIM PERSISTENT_UNDO: {{{
 if has('persistent_undo')
 	if has('win32')
 		let &undodir = expand($HOME . '/vimfiles/undo')
