@@ -42,35 +42,6 @@ set statusline+=\ [%{&ff}]\                    " File Format
 set nobackup                 " Don't need backup files
 set noswapfile               " Don't need swap files
 
-set path+=**                 " Search subfolders with find tab completion
-set wildmenu                 " Displays all matches for tab completion
-set wildignore=              " Basic file types to ignore with find tab completion
-set wildignore+=*.bak
-set wildignore+=*.gif
-set wildignore+=*.ico
-set wildignore+=*.jpg,*.jpeg,*.jpe
-set wildignore+=*.lock
-set wildignore+=*.phar
-set wildignore+=*.png
-set wildignore+=*.pyc
-set wildignore+=*.svg
-set wildignore+=*.swp,*.orig
-set wildignore+=*.ttf,*.eot,*.woff,*.woff2
-set wildignore+=*.pyc
-set wildignore+=.git
-
-" Set vimgrep command
-cnoreabbrev grep silent grep
-if executable("rg")
-    " Use RipGrep if it is installed
-    let rg_wildignore=" --glob !" . substitute(&wildignore, ',', ' --glob !', 'g')
-    " let rg_ignore=" --ignore-file .gitignore --ignore-file .hgignore " . rg_wildignore
-    let rg_ignore=" --no-ignore " . rg_wildignore
-    let rg_options=" --no-heading --no-messages --ignore-case"
-    let &grepprg="rg --vimgrep" . rg_options . rg_ignore
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-
 set formatoptions+=j        " Sane line join formatting
 
 match ErrorMsg '\%>120v.\+' " Highlight lines >120 characters
@@ -87,6 +58,46 @@ if has('persistent_undo')
         silent call mkdir(&undodir, 'p')
     endif
     set undofile
+endif
+" }}}
+" WILDIGNORE: {{{
+set path+=**                 " Search subfolders with find tab completion
+set wildmenu                 " Displays all matches for tab completion
+set wildignore=              " Basic file types to ignore with find tab completion
+set wildignore+=*.bak
+set wildignore+=*.gif
+set wildignore+=*.ico
+set wildignore+=*.jpg,*.jpeg,*.jpe
+set wildignore+=*.lock
+set wildignore+=*.phar
+set wildignore+=*.png
+set wildignore+=*.pyc
+set wildignore+=*.svg
+set wildignore+=*.swp,*.orig
+set wildignore+=*.ttf,*.eot,*.woff,*.woff2
+set wildignore+=*.pyc
+set wildignore+=.git
+" }}}
+" VIMGREP: {{{
+cnoreabbrev grep silent grep
+if executable("rg")
+    " Use RipGrep if it is installed
+    let rg_wildignore=" --glob !" . substitute(&wildignore, ',', ' --glob !', 'g')
+    " let rg_ignore=" --ignore-file .gitignore --ignore-file .hgignore " . rg_wildignore
+    let rg_ignore=" --no-ignore " . rg_wildignore
+    let rg_options=" --no-heading --no-messages --ignore-case"
+    let &grepprg="rg --vimgrep" . rg_options . rg_ignore
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+
+    nnoremap gr :silent execute 'grep -t ' . &filetype expand('<cword>')<CR>
+    " nnoremap Gr :execute 'grep -F -t ' . &filetype expand('<cword>')<CR>
+    nnoremap gR :silent execute 'grep -w -t ' . &filetype expand('<cword>')<CR>
+    " nnoremap GR :execute 'grep -F -w -t ' . &filetype expand('<cword>')<CR>
+else
+    nnoremap gr :silent grep <cword> *<CR>
+    " nnoremap Gr :silent grep <cword> %:p:h/*<CR>
+    nnoremap gR :silent grep "\b<cword>\b" *<CR>
+    " nnoremap GR :silent grep '\b<cword>\b' %:p:h/*<CR>
 endif
 " }}}
 " CONEMU: {{{
@@ -173,6 +184,7 @@ let g:qf_auto_quit = 0
 " SIGNIFY: {{{
 let g:signify_vcs_cmds = {
             \ 'git': 'git diff --no-color --no-ext-diff -U0 -- %f',
+            \ 'hg':  'hg diff --config extensions.color=! --config defaults.diff= --nodates -U0 -- %f',
             \ }
 " }}}
 " SHORTCUTS: {{{
@@ -185,6 +197,7 @@ nnoremap <leader>t :tag <c-r><c-w><cr>
 
 " Quickfix shortcut
 nnoremap <leader>x :cclose<CR>
+nnoremap <leader>X :cclose<CR>:bd<CR>
 
 " Cut/Copy/Paste
 vmap <C-x> "*d
@@ -210,6 +223,11 @@ let g:startify_list_order          = [
             \]
 let g:startify_fortune_use_unicode = 1
 let g:startify_custom_header = 'startify#fortune#boxed()'
+" let g:startify_custom_header = [
+"             \ '        \  | __|    | \    /  _| ` ` \',
+"             \ '       | \ | _|   | |  \  /   |  | | |',
+"             \ '      _|  _|___|____|   _/  ___|_|_|_|',
+"             \ ]
 " }}}
 " THEME: {{{
 set fillchars=vert:│
