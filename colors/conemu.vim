@@ -28,8 +28,8 @@ highlight SpellBad       term=reverse ctermbg=12 gui=undercurl guisp=Red
 highlight SpellCap       term=reverse ctermbg=9 gui=undercurl guisp=Blue
 highlight SpellRare      term=reverse ctermbg=13 gui=undercurl guisp=Magenta
 highlight SpellLocal     term=underline ctermbg=11 gui=undercurl guisp=Cyan
-highlight Pmenu          ctermfg=0 ctermbg=13 guibg=Magenta
-highlight PmenuSel       ctermfg=8 ctermbg=0 guibg=DarkGrey
+highlight Pmenu          term=underline ctermfg=DarkCyan ctermbg=4 guifg=Yellow
+highlight PmenuSel       term=bold cterm=bold ctermfg=11 ctermbg=none gui=bold guifg=Yellow
 highlight PmenuSbar      ctermbg=7 guibg=Grey
 highlight PmenuThumb     ctermbg=15 guibg=White
 highlight TabLine        term=underline cterm=underline ctermfg=15 ctermbg=8 gui=underline guibg=DarkGrey
