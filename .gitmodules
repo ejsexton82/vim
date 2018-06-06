@@ -91,3 +91,6 @@
 [submodule "pack/vendor/start/vim-rails"]
 	path = pack/vendor/start/vim-rails
 	url = git://github.com/tpope/vim-rails
+[submodule "pack/vendor/start/vim-ps1"]
+	path = pack/vendor/start/vim-ps1
+	url = git://github.com/PProvost/vim-ps1
