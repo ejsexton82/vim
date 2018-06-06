@@ -94,3 +94,6 @@
 [submodule "pack/vendor/start/vim-ps1"]
 	path = pack/vendor/start/vim-ps1
 	url = git://github.com/PProvost/vim-ps1
+[submodule "pack/vendor/opt/deoplete.nvim"]
+	path = pack/vendor/opt/deoplete.nvim
+	url = git://github.com/Shougo/deoplete.nvim
