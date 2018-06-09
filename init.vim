@@ -53,7 +53,11 @@ match ErrorMsg '\s\+$'      " Highlight trailing whitespace
 " VIM PERSISTENT_UNDO: {{{
 if has('persistent_undo')
 	if has('win32')
-		let &undodir = expand($HOME . '/vimfiles/undo')
+		if has('nvim')
+			let &undodir = expand($HOME . '/AppData/Local/nvim/undo')
+		else
+			let &undodir = expand($HOME . '/vimfiles/undo')
+		endif
 	else
 		let &undodir = expand($HOME . '/.vim/undo')
 	endif
@@ -104,27 +108,27 @@ else
 endif
 " }}}
 " CONEMU: {{{
-if !has('gui_running')
-    if !has('nvim')
-        set term=xterm
-    endif
+" if !has('gui_running')
+"     if !has('nvim')
+"         set term=xterm
+"     endif
 
-    " Fix the colors
-    set t_Co=256
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
+"     " Fix the colors
+"     set t_Co=256
+"     let &t_AB="\e[48;5;%dm"
+"     let &t_AF="\e[38;5;%dm"
 
-    " Fix the BackSpace
-    inoremap <Char-0x07F> <BS>
-    nnoremap <Char-0x07F> <BS>
+"     " Fix the BackSpace
+"     inoremap <Char-0x07F> <BS>
+"     nnoremap <Char-0x07F> <BS>
 
-    " Fix the Mouse Scroll Wheel
-    set mouse=a
-    " inoremap <Esc>[62~ <C-X><C-E>
-    " inoremap <Esc>[63~ <C-X><C-Y>
-    " nnoremap <Esc>[62~ <C-E>
-    " nnoremap <Esc>[63~ <C-Y>
-endif
+"     " Fix the Mouse Scroll Wheel
+"     set mouse=a
+"     " inoremap <Esc>[62~ <C-X><C-E>
+"     " inoremap <Esc>[63~ <C-X><C-Y>
+"     " nnoremap <Esc>[62~ <C-E>
+"     " nnoremap <Esc>[63~ <C-Y>
+" endif
 " }}}
 " DEOPLETE: {{{
 let g:deoplete#enable_at_startup = 1
@@ -134,6 +138,10 @@ let g:deoplete#skip_chars = ['$']
 let g:deoplete#sources = {}
 " let g:deoplete#sources.php = ['padawan', 'ultisnips', 'tags', 'buffer']
 let g:deoplete#sources.php = ['padawan', 'tags', 'buffer']
+
+if has("win32")
+    let g:python3_host_prog = 'C:\Python37\python.exe'
+endif
 
 if has('nvim')
     packadd deoplete.nvim
@@ -216,6 +224,9 @@ vnoremap < <gv
 vnoremap > >gv
 " }}}
 " STARTIFY: {{{
+if has('win32') && has('nvim')
+    let g:startify_session_dir = '~/Local/AppData/nvim/session'
+endif
 let g:startify_session_persistence = 1
 let g:startify_bookmarks = [
             \   '~/Documents/AutoHotKey.ahk'
@@ -226,11 +237,6 @@ let g:startify_list_order          = [
             \]
 let g:startify_fortune_use_unicode = 1
 let g:startify_custom_header = 'startify#fortune#boxed()'
-" let g:startify_custom_header = [
-"             \ '        \  | __|    | \    /  _| ` ` \',
-"             \ '       | \ | _|   | |  \  /   |  | | |',
-"             \ '      _|  _|___|____|   _/  ___|_|_|_|',
-"             \ ]
 " }}}
 " THEME: {{{
 set fillchars=vert:│

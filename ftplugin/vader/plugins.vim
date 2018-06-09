@@ -10,7 +10,11 @@ endif
 let g:loaded_ftplugin_vader_plugins=1
 
 if has('win32')
-	source $HOME/vimfiles/ftplugin/plugins.vim
+	if has('nvim')
+		source $HOME/AppData/Local/nvim/ftplugin/plugins.vim
+	else
+		source $HOME/vimfiles/ftplugin/plugins.vim
+	endif
 else
 	source $HOME/.vim/ftplugin/plugins.vim
 endif
