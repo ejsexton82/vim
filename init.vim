@@ -186,6 +186,9 @@ else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
 " }}}
+" INDENTLINE: {{{
+set list lcs=tab:\┊\ 
+" }}}
 " LION: {{{
 let g:lion_squeeze_spaces = 1
 " }}}
