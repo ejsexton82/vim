@@ -30,7 +30,7 @@ packadd ale
 " }}}
 " INDENTLINE: {{{
 let g:indentLine_char = '┊'
-set list lcs=tab:\┊\ 
+" set list lcs=tab:\┊\ 
 " }}}
 " TAGBAR: {{{
 nmap <F8> :TagbarToggle<CR>
