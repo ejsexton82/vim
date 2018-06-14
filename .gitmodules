@@ -85,9 +85,6 @@
 [submodule "pack/vendor/opt/vim-php-refactoring-toolbox"]
 	path = pack/vendor/opt/vim-php-refactoring-toolbox
 	url = git://github.com/adoy/vim-php-refactoring-toolbox
-[submodule "deoplete.nvim"]
-	path = deoplete.nvim
-	url = git://github.com/Shougo/deoplete.nvim
 [submodule "pack/vendor/start/vim-rails"]
 	path = pack/vendor/start/vim-rails
 	url = git://github.com/tpope/vim-rails
