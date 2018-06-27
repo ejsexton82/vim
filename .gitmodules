@@ -16,9 +16,6 @@
 [submodule "pack/vendor/start/vim-signify"]
 	path = pack/vendor/start/vim-signify
 	url = git://github.com/mhinz/vim-signify
-[submodule "pack/vendor/opt/vim-javascript"]
-	path = pack/vendor/opt/vim-javascript
-	url = git://github.com/pangloss/vim-javascript
 [submodule "pack/vendor/opt/php.vim"]
 	path = pack/vendor/opt/php.vim
 	url = git://github.com/StanAngeloff/php.vim
@@ -94,3 +91,6 @@
 [submodule "pack/vendor/opt/deoplete.nvim"]
 	path = pack/vendor/opt/deoplete.nvim
 	url = git://github.com/Shougo/deoplete.nvim
+[submodule "pack/vendor/start/vim-javascript"]
+	path = pack/vendor/start/vim-javascript
+	url = git://github.com/pangloss/vim-javascript

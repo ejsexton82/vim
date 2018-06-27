@@ -18,5 +18,3 @@ if has('win32')
 else
 	source $HOME/.vim/ftplugin/plugins.vim
 endif
-
-packadd vim-javascript
