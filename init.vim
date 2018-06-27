@@ -241,4 +241,9 @@ let g:startify_custom_header = 'startify#fortune#boxed()'
 " THEME: {{{
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
+if has('win32') && has('nvim')
+    " For some reason, colorscheme switches to default after init.vim on
+    " Windows. Using autocmd solves this problem.
+    autocmd VimEnter * colorscheme conemu
+endif
 " }}}
