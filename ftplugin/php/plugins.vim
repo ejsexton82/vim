@@ -3,7 +3,6 @@ if !has('nvim')
 endif
 
 source $HOME/.vim/ftplugin/plugins.vim
-source $HOME/.vim/ftplugin/javascript/plugins.vim
 
 if exists('g:loaded_ftplugin_php_plugins')
     finish
