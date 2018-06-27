@@ -34,9 +34,6 @@
 [submodule "pack/vendor/opt/tagbar"]
 	path = pack/vendor/opt/tagbar
 	url = git://github.com/majutsushi/tagbar
-[submodule "pack/vendor/opt/vader.vim"]
-	path = pack/vendor/opt/vader.vim
-	url = git://github.com/junegunn/vader.vim
 [submodule "pack/vendor/opt/ale"]
 	path = pack/vendor/opt/ale
 	url = git://github.com/w0rp/ale
@@ -94,3 +91,6 @@
 [submodule "pack/vendor/start/vim-javascript"]
 	path = pack/vendor/start/vim-javascript
 	url = git://github.com/pangloss/vim-javascript
+[submodule "pack/vendor/start/vader.vim"]
+	path = pack/vendor/start/vader.vim
+	url = git://github.com/junegunn/vader.vim
