@@ -1,8 +1,3 @@
-" TABS:
-set expandtab
-set tabstop=4
-set shiftwidth=4
-
 " PLUGINS:
 if exists('g:loaded_ftplugin_plugins')
     finish
@@ -33,13 +28,13 @@ let g:ale_fixers              = {
 
 packadd ale
 " }}}
-
-" INDENTLINE:
+" INDENTLINE: {{{
 let g:indentLine_char = '┊'
-
-" TAGBAR:
+" set list lcs=tab:\┊\ 
+" }}}
+" TAGBAR: {{{
 nmap <F8> :TagbarToggle<CR>
 packadd tagbar
-
+" }}}
 packadd vim-commentary
 packadd vim-surround

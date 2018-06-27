@@ -30,22 +30,6 @@ set smartcase                        " ...except when there are capital letters
 
 set formatoptions+=j        " Sane line join formatting
 " }}}
-" VIM STATUSLINE: {{{
-set laststatus=2                     " Make sure the status line is displayed
-
-set statusline=\                               " Custom status line
-set statusline+=%(%h%q%w\ %)                   " Help/Quickfix/Preview window
-set statusline+=%F                             " File path
-set statusline+=%(\ %m%)                       " Modified
-set statusline+=%=                             " Right Align
-set statusline+=%y                             " filetype
-set statusline+=\ [%{empty(&fenc)?&enc:&fenc}] " File Encoding
-set statusline+=\ [%{&ff}]\                    " File Format
-" }}}
-" VIM SWAP: {{{
-set nobackup                 " Don't need backup files
-set noswapfile               " Don't need swap files
-" }}}
 " VIM ERRORMSG: {{{
 match ErrorMsg '\%>120v.\+' " Highlight lines >120 characters
 match ErrorMsg '\s\+$'      " Highlight trailing whitespace
@@ -66,6 +50,27 @@ if has('persistent_undo')
     endif
     set undofile
 endif
+" }}}
+" VIM STATUSLINE: {{{
+set laststatus=2                     " Make sure the status line is displayed
+
+set statusline=\                               " Custom status line
+set statusline+=%(%h%q%w\ %)                   " Help/Quickfix/Preview window
+set statusline+=%F                             " File path
+set statusline+=%(\ %m%)                       " Modified
+set statusline+=%=                             " Right Align
+set statusline+=%y                             " filetype
+set statusline+=\ [%{empty(&fenc)?&enc:&fenc}] " File Encoding
+set statusline+=\ [%{&ff}]\                    " File Format
+" }}}
+" VIM SWAP: {{{
+set nobackup                 " Don't need backup files
+set noswapfile               " Don't need swap files
+" }}}
+" VIM TABS: Default Tabs {{{
+set expandtab
+set tabstop=4
+set shiftwidth=4
 " }}}
 " WILDIGNORE: {{{
 set path+=**                 " Search subfolders with find tab completion
