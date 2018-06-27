@@ -233,13 +233,20 @@ if has('win32') && has('nvim')
     let g:startify_session_dir = '~/Local/AppData/nvim/session'
 endif
 let g:startify_session_persistence = 1
-let g:startify_bookmarks = [
-            \   '~/Documents/AutoHotKey.ahk'
-            \ ]
-let g:startify_list_order          = [
-            \   ['Sessions'], 'sessions',
-            \   ['Bookmarks'], 'bookmarks'
-            \]
+if has('win32')
+    let g:startify_bookmarks = [
+                \   '~/Documents/AutoHotKey.ahk'
+                \ ]
+    let g:startify_list_order          = [
+                \   ['Sessions'], 'sessions',
+                \   ['Bookmarks'], 'bookmarks'
+                \]
+else
+    let g:startify_bookmarks = [ ]
+    let g:startify_list_order = [
+                \ ['Sessions'], 'sessions
+                \]
+endif
 let g:startify_fortune_use_unicode = 1
 let g:startify_custom_header = 'startify#fortune#boxed()'
 " }}}
