@@ -244,7 +244,7 @@ if has('win32')
 else
     let g:startify_bookmarks = [ ]
     let g:startify_list_order = [
-                \ ['Sessions'], 'sessions
+                \ ['Sessions'], 'sessions'
                 \]
 endif
 let g:startify_fortune_use_unicode = 1
