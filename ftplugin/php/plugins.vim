@@ -2,7 +2,15 @@ if !has('nvim')
     setlocal omnifunc=phpcomplete#CompletePHP
 endif
 
-source $HOME/.vim/ftplugin/plugins.vim
+if has('win32')
+	if has('nvim')
+		source $HOME/AppData/Local/nvim/ftplugin/plugins.vim
+	else
+		source $HOME/vimfiles/ftplugin/plugins.vim
+	endif
+else
+	source $HOME/.vim/ftplugin/plugins.vim
+endif
 
 if exists('g:loaded_ftplugin_php_plugins')
     finish
