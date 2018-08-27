@@ -70,9 +70,6 @@
 [submodule "pack/vendor/start/tabular"]
 	path = pack/vendor/start/tabular
 	url = git://github.com/godlygeek/tabular
-[submodule "pack/vendor/opt/deoplete-padawan"]
-	path = pack/vendor/opt/deoplete-padawan
-	url = git://github.com/padawan-php/deoplete-padawan
 [submodule "pack/vendor/start/vim-fugitive"]
 	path = pack/vendor/start/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive
@@ -85,9 +82,6 @@
 [submodule "pack/vendor/start/vim-ps1"]
 	path = pack/vendor/start/vim-ps1
 	url = git://github.com/PProvost/vim-ps1
-[submodule "pack/vendor/opt/deoplete.nvim"]
-	path = pack/vendor/opt/deoplete.nvim
-	url = git://github.com/Shougo/deoplete.nvim
 [submodule "pack/vendor/start/vim-javascript"]
 	path = pack/vendor/start/vim-javascript
 	url = git://github.com/pangloss/vim-javascript

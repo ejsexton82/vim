@@ -135,24 +135,6 @@ endif
 "     " nnoremap <Esc>[63~ <C-Y>
 " endif
 " }}}
-" DEOPLETE: {{{
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#padawan#add_parentheses = 1
-" needed for echodoc to work if add_parentheses is 1
-let g:deoplete#skip_chars = ['$']
-let g:deoplete#sources = {}
-" let g:deoplete#sources.php = ['padawan', 'ultisnips', 'tags', 'buffer']
-let g:deoplete#sources.php = ['padawan', 'tags', 'buffer']
-
-if has("win32")
-    let g:python3_host_prog = 'C:\Python37\python.exe'
-endif
-
-if has('nvim')
-    packadd deoplete.nvim
-    autocmd VimEnter * silent UpdateRemotePlugins
-endif
-" }}}
 " FZF: Better than Ctrl-P! (but only if it's installed) {{{
 if executable('fzf')
     packadd! fzf
