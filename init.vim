@@ -36,15 +36,15 @@ match ErrorMsg '\s\+$'      " Highlight trailing whitespace
 " }}}
 " VIM PERSISTENT_UNDO: {{{
 if has('persistent_undo')
-	if has('win32')
-		if has('nvim')
-			let &undodir = expand($HOME . '/AppData/Local/nvim/undo')
-		else
-			let &undodir = expand($HOME . '/vimfiles/undo')
-		endif
-	else
-		let &undodir = expand($HOME . '/.vim/undo')
-	endif
+    if has('win32')
+        if has('nvim')
+            let &undodir = expand($HOME . '/AppData/Local/nvim/undo')
+        else
+            let &undodir = expand($HOME . '/vimfiles/undo')
+        endif
+    else
+        let &undodir = expand($HOME . '/.vim/undo')
+    endif
     if !isdirectory(&undodir)
         silent call mkdir(&undodir, 'p')
     endif
@@ -112,28 +112,8 @@ else
     " nnoremap GR :silent grep '\b<cword>\b' %:p:h/*<CR>
 endif
 " }}}
-" CONEMU: {{{
-" if !has('gui_running')
-"     if !has('nvim')
-"         set term=xterm
-"     endif
-
-"     " Fix the colors
-"     set t_Co=256
-"     let &t_AB="\e[48;5;%dm"
-"     let &t_AF="\e[38;5;%dm"
-
-"     " Fix the BackSpace
-"     inoremap <Char-0x07F> <BS>
-"     nnoremap <Char-0x07F> <BS>
-
-"     " Fix the Mouse Scroll Wheel
-"     set mouse=a
-"     " inoremap <Esc>[62~ <C-X><C-E>
-"     " inoremap <Esc>[63~ <C-X><C-Y>
-"     " nnoremap <Esc>[62~ <C-E>
-"     " nnoremap <Esc>[63~ <C-Y>
-" endif
+" MOUSE: {{{
+set mouse=a " Fix the Mouse Scroll Wheel
 " }}}
 " FZF: Better than Ctrl-P! (but only if it's installed) {{{
 if executable('fzf')
@@ -182,7 +162,6 @@ let g:qf_auto_quit = 0
 " SIGNIFY: {{{
 let g:signify_vcs_cmds = {
             \ 'git': 'git diff --no-color --no-ext-diff -U0 -- %f',
-            \ 'hg':  'hg diff --config extensions.color=! --config defaults.diff= --nodates -U0 -- %f',
             \ }
 " }}}
 " SHORTCUTS: {{{
