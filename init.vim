@@ -67,6 +67,12 @@ set statusline+=\ [%{&ff}]\                    " File Format
 set nobackup                 " Don't need backup files
 set noswapfile               " Don't need swap files
 " }}}
+" VIM SHELL:{{{
+if has('win32') || has('win64')
+    " Fixes bug with &shell and jobstart() on Windows
+    set shell=cmd.exe
+endif
+" }}}
 " VIM TABS: Default Tabs {{{
 set expandtab
 set tabstop=4
@@ -111,29 +117,6 @@ else
     nnoremap gR :silent grep "\b<cword>\b" *<CR>
     " nnoremap GR :silent grep '\b<cword>\b' %:p:h/*<CR>
 endif
-" }}}
-" CONEMU: {{{
-" if !has('gui_running')
-"     if !has('nvim')
-"         set term=xterm
-"     endif
-
-"     " Fix the colors
-"     set t_Co=256
-"     let &t_AB="\e[48;5;%dm"
-"     let &t_AF="\e[38;5;%dm"
-
-"     " Fix the BackSpace
-"     inoremap <Char-0x07F> <BS>
-"     nnoremap <Char-0x07F> <BS>
-
-"     " Fix the Mouse Scroll Wheel
-"     set mouse=a
-"     " inoremap <Esc>[62~ <C-X><C-E>
-"     " inoremap <Esc>[63~ <C-X><C-Y>
-"     " nnoremap <Esc>[62~ <C-E>
-"     " nnoremap <Esc>[63~ <C-Y>
-" endif
 " }}}
 " DEOPLETE: {{{
 let g:deoplete#enable_at_startup = 1
@@ -190,6 +173,9 @@ if executable('fzf')
 else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
+" }}}
+" GRAMMAROUS:{{{
+nnoremap <leader>g :GrammarousCheck<CR>
 " }}}
 " LION: {{{
 let g:lion_squeeze_spaces = 1
