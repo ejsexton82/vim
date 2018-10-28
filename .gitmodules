@@ -94,3 +94,9 @@
 [submodule "pack/vendor/start/vader.vim"]
 	path = pack/vendor/start/vader.vim
 	url = git://github.com/junegunn/vader.vim
+[submodule "pack/vendor/start/goyo.vim"]
+	path = pack/vendor/start/goyo.vim
+	url = git://github.com/junegunn/goyo.vim
+[submodule "pack/vendor/start/vim-grammarous"]
+	path = pack/vendor/start/vim-grammarous
+	url = git://github.com/rhysd/vim-grammarous
