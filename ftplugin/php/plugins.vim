@@ -1,6 +1,4 @@
-if !has('nvim')
-    setlocal omnifunc=phpcomplete#CompletePHP
-endif
+setlocal omnifunc=phpcomplete#CompletePHP
 
 if has('win32')
 	if has('nvim')
@@ -19,14 +17,7 @@ let g:loaded_ftplugin_php_plugins=1
 
 packadd php.vim        " Syntax highlighting
 
-if has('nvim')
-    " PADAWAN: {{{
-    packadd deoplete-padawan
-    silent ! composer install --working-dir=$HOME/.vim/pack/vendor/opt/deoplete-padawan/
-    " }}}
-else
-    packadd phpcomplete.vim
-endif
+packadd phpcomplete.vim
 
 " REFACTORING: {{{
 let g:vim_php_refactoring_default_property_visibility = 'private'
