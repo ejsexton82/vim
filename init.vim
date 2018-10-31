@@ -159,8 +159,21 @@ else
     " TODO Default to Ctrl-P, because it's better than nothing
 endif
 " }}}
+" GOYO: {{{
+function! s:goyo_enter()
+    set spell
+endfunction
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+
+function! s:goyo_leave()
+    set nospell
+endfunction
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+nnoremap <leader>g :Goyo<CR>
+" }}}
 " GRAMMAROUS:{{{
-nnoremap <leader>g :GrammarousCheck<CR>
+cabbrev gc GrammarousCheck
+cabbrev gr GrammarousReset
 " }}}
 " LION: {{{
 let g:lion_squeeze_spaces = 1
