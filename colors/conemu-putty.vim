@@ -59,3 +59,5 @@ highlight ALESignColumnWithoutErrors term=standout ctermfg=11 guifg=Cyan guibg=G
 " highlight Folded ctermbg=darkblue
 " highlight Error  ctermbg=red
 " highlight CursorLineNr cterm=bold ctermfg=yellow
+highlight IndentGuidesOdd  ctermbg=LightBlue
+highlight IndentGuidesEven ctermbg=LightBlue

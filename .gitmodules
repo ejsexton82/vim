@@ -61,9 +61,6 @@
 [submodule "pack/vendor/start/dracula"]
 	path = pack/vendor/start/dracula
 	url = git://github.com/dracula/vim
-[submodule "pack/vendor/start/indentLine"]
-	path = pack/vendor/start/indentLine
-	url = git://github.com/Yggdroot/indentLine
 [submodule "pack/vendor/start/vim-sort-motion"]
 	path = pack/vendor/start/vim-sort-motion
 	url = git://github.com/christoomey/vim-sort-motion
@@ -94,3 +91,6 @@
 [submodule "pack/vendor/start/vim-grammarous"]
 	path = pack/vendor/start/vim-grammarous
 	url = git://github.com/rhysd/vim-grammarous
+[submodule "pack/vendor/start/vim-indent-guides"]
+	path = pack/vendor/start/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides

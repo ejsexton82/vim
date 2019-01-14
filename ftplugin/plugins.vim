@@ -28,10 +28,6 @@ let g:ale_fixers              = {
 
 packadd ale
 " }}}
-" INDENTLINE: {{{
-let g:indentLine_char = '┊'
-" set list lcs=tab:\┊\ 
-" }}}
 " TAGBAR: {{{
 nmap <F8> :TagbarToggle<CR>
 packadd tagbar
