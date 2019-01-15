@@ -33,4 +33,3 @@ nmap <F8> :TagbarToggle<CR>
 packadd tagbar
 " }}}
 packadd vim-commentary
-packadd vim-surround

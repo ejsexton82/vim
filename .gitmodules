@@ -8,7 +8,7 @@
 	path = pack/vendor/opt/vim-commentary
 	url = git://github.com/tpope/vim-commentary
 [submodule "pack/vendor/opt/vim-surround"]
-	path = pack/vendor/opt/vim-surround
+	path = pack/vendor/start/vim-surround
 	url = git://github.com/tpope/vim-surround
 [submodule "pack/vendor/start/vim-unimpaired"]
 	path = pack/vendor/start/vim-unimpaired
