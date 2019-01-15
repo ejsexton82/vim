@@ -98,6 +98,7 @@ set wildignore+=*.swp,*.orig
 set wildignore+=*.ttf,*.eot,*.woff,*.woff2
 set wildignore+=*.pyc
 set wildignore+=.git
+set wildignore+=node_modules
 " }}}
 " VIMGREP: {{{
 cnoreabbrev grep silent grep
