@@ -94,3 +94,6 @@
 [submodule "pack/vendor/start/vim-indent-guides"]
 	path = pack/vendor/start/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides
+[submodule "pack/vendor/start/vim-jsx"]
+	path = pack/vendor/start/vim-jsx
+	url = git://github.com/mxw/vim-jsx
