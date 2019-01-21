@@ -1,14 +1,8 @@
 setlocal tabstop=2 shiftwidth=2 softtabstop=2
-if exists('b:did_ftplugin')
+if exists('g:loaded_ftplugin_json_plugins')
     finish
 endif
-let b:did_ftplugin = 1
-
-" PLUGINS:
-if exists('g:loaded_ftplugin_html_plugins')
-    finish
-endif
-let g:loaded_ftplugin_html_plugins=1
+let g:loaded_ftplugin_json_plugins = 1
 
 if has('win32')
 	if has('nvim')

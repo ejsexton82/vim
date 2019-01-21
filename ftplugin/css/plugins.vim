@@ -1,3 +1,4 @@
+setlocal tabstop=2 shiftwidth=2 softtabstop=2
 if exists('g:loaded_ftplugin_css_plugins')
     finish
 endif
