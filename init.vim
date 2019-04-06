@@ -125,10 +125,54 @@ endif
 " MOUSE: {{{
 set mouse=a " Fix the Mouse Scroll Wheel
 " }}}
+" PLUG: {{{
+
+if has('win32')
+	if has('nvim')
+		call plug#begin('$HOME/AppData/Local/nvim/plugged')
+	else
+		call plug#begin('$HOME/vimfiles/plugged')
+	endif
+else
+	call plug#begin('$HOME/.vim/plugged')
+endif
+
+Plug 'PProvost/vim-ps1'
+Plug 'adoy/vim-php-refactoring-toolbox', { 'for': 'php' }
+Plug 'chivalry/filemaker.vim'
+Plug 'christoomey/vim-sort-motion'
+Plug 'dracula/vim'
+Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'junegunn/vader.vim', { 'on': 'Vader', 'for': 'vader' }
+Plug 'justinmk/vim-sneak'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-startify'
+Plug 'mxw/vim-jsx'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'romainl/vim-qf'
+Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-vdebug/vdebug', { 'for': 'php' }
+Plug 'w0rp/ale'
+
+call plug#end()
+
+" }}}
 " FZF: Better than Ctrl-P! (but only if it's installed) {{{
 if executable('fzf')
-    packadd! fzf
-    packadd! fzf.vim
     let g:fzf_layout = { 'down': '~40%' }
 
     " WITH RG: Even better than FZF! (but only if it's installed)
