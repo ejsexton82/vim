@@ -26,10 +26,7 @@ let g:ale_fixers              = {
             \   ]
             \}
 
-packadd ale
 " }}}
 " TAGBAR: {{{
 nmap <F8> :TagbarToggle<CR>
-packadd tagbar
 " }}}
-packadd vim-commentary

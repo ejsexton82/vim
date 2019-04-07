@@ -1,3 +1,5 @@
+setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
 if exists('g:loaded_ftplugin_php_config')
     finish
 endif

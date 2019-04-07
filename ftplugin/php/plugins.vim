@@ -15,9 +15,6 @@ if exists('g:loaded_ftplugin_php_plugins')
 endif
 let g:loaded_ftplugin_php_plugins=1
 
-packadd php.vim        " Syntax highlighting
-
-packadd phpcomplete.vim
 
 " REFACTORING: {{{
 let g:vim_php_refactoring_default_property_visibility = 'private'
@@ -37,8 +34,4 @@ nnoremap <leader>rnp :call PhpCreateProperty()<CR>
 nnoremap <leader>rdu :call PhpDetectUnusedUseStatements()<CR>
 vnoremap <leader>r== :call PhpAlignAssigns()<CR>
 nnoremap <leader>rsg :call PhpCreateSettersAndGetters()<CR>
-
-packadd vim-php-refactoring-toolbox
 " }}}
-
-packadd vdebug
