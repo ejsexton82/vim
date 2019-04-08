@@ -143,7 +143,7 @@ Plug 'adoy/vim-php-refactoring-toolbox', { 'for': 'php' }
 Plug 'chivalry/filemaker.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'dracula/vim'
-Plug 'ejsexton82/php.vim-html-enhanced', { 'branch': 'develop', 'for': 'php' }
+Plug 'ejsexton82/php.vim-html-enhanced', { 'for': 'php' }
 Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
