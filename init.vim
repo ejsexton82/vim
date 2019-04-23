@@ -30,6 +30,13 @@ set smartcase                        " ...except when there are capital letters
 
 set formatoptions+=j        " Sane line join formatting
 " }}}
+" VIM COC: {{{
+set hidden         " Abandon hidden buffers
+set cmdheight=2 
+set updatetime=300 " Shorter update time for CursorHold / CursorHoldI
+set shortmess+=c   " No ins-completion-menu messages
+set signcolumn=yes " Always show sign column
+" }}}
 " VIM DISPLAY: {{{
 set conceallevel=2          " Hides quotes in JSON files
 " }}}
@@ -65,6 +72,7 @@ set statusline+=%=                             " Right Align
 set statusline+=%y                             " filetype
 set statusline+=\ [%{empty(&fenc)?&enc:&fenc}] " File Encoding
 set statusline+=\ [%{&ff}]\                    " File Format
+
 " }}}
 " VIM SWAP: {{{
 set nobackup                 " Don't need backup files
@@ -167,6 +175,32 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-vdebug/vdebug', { 'for': 'php' }
 
 call plug#end()
+
+" }}}
+" CoC: {{{
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+command! -nargs=0 Format :call CocAction('format')
+" command! -nargs=? Fold   :call CocAction('fold', <f-args>)
 
 " }}}
 " FZF: Better than Ctrl-P! (but only if it's installed) {{{
