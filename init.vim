@@ -138,12 +138,9 @@ else
 endif
 
 Plug 'PProvost/vim-ps1'
-Plug 'StanAngeloff/php.vim', { 'for': 'php' }
-Plug 'adoy/vim-php-refactoring-toolbox', { 'for': 'php' }
 Plug 'chivalry/filemaker.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'dracula/vim'
-Plug 'ejsexton82/PHP-Indenting-for-VIm', { 'branch': 'develop', 'for': 'php' }
 Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -155,10 +152,10 @@ Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'romainl/vim-qf'
-Plug 'shawncplus/phpcomplete.vim', { 'for': 'php' }
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -168,7 +165,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-vdebug/vdebug', { 'for': 'php' }
-Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -288,6 +284,9 @@ else
 endif
 let g:startify_fortune_use_unicode = 1
 let g:startify_custom_header = 'startify#fortune#boxed()'
+" }}}
+" TAGBAR: {{{
+nmap <F8> :TagbarToggle<CR>
 " }}}
 " THEME: {{{
 set fillchars=vert:│
