@@ -150,7 +150,7 @@ Plug 'PProvost/vim-ps1'
 Plug 'chivalry/filemaker.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'dracula/vim'
-Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
+" Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
@@ -163,7 +163,7 @@ Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 Plug 'pangloss/vim-javascript'
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 Plug 'romainl/vim-qf'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-abolish'
@@ -264,6 +264,14 @@ let g:indent_guides_guide_size = 1
 " }}}
 " LION: {{{
 let g:lion_squeeze_spaces = 1
+" }}}
+" PYTHON: {{{
+
+" Check for Python 3 in some common locations
+if executable('/usr/local/bin/python3')
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+
 " }}}
 " QF: {{{
 let g:qf_auto_quit = 0
