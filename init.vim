@@ -112,7 +112,7 @@ set wildignore+=node_modules
 cnoreabbrev grep silent grep
 if executable("rg")
     " Use RipGrep if it is installed
-    let rg_wildignore=" --glob !" . substitute(&wildignore, ',', ' --glob !', 'g')
+    let rg_wildignore=' --glob "!' . substitute(&wildignore, ',', '" --glob "!', 'g') . '"'
     " let rg_ignore=" --ignore-file .gitignore --ignore-file .hgignore " . rg_wildignore
     let rg_ignore=" --no-ignore " . rg_wildignore
     let rg_options=" --no-heading --no-messages --ignore-case"
