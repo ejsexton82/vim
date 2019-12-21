@@ -163,7 +163,8 @@ Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
 Plug 'pangloss/vim-javascript'
-" Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 Plug 'romainl/vim-qf'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-abolish'
