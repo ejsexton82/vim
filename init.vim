@@ -151,6 +151,7 @@ Plug 'chivalry/filemaker.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'dracula/vim'
 " Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
+Plug 'jamessan/vim-gnupg'
 Plug 'jceb/vim-orgmode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -259,6 +260,12 @@ nnoremap <leader>g :Goyo<CR>
 " GRAMMAROUS:{{{
 cabbrev gc GrammarousCheck
 cabbrev gr GrammarousReset
+" }}}
+" GnuPG:{{{
+let g:GPGPreferArmor=1
+let g:GPGDefaultRecipients=["ejsexton82@gmail.com"]
+vnoremap { :!gpg --decrypt --quiet<Enter>
+vnoremap } :!gpg --armor --encrypt<Enter>
 " }}}
 " INDENT-GUIDES: {{{
 let g:indent_guides_enable_on_vim_startup = 1
