@@ -150,7 +150,7 @@ Plug 'chivalry/filemaker.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'dracula/vim'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf' " , { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/vader.vim', { 'on': 'Vader', 'for': 'vader' }
