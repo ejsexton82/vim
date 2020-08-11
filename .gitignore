@@ -1,6 +1,8 @@
+*.old
 .netrwhist
+node_modules
+plugged
+rplugin.vim
 session
 tags
 undo
-rplugin.vim
-plugged

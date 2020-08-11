@@ -112,9 +112,9 @@ set wildignore+=node_modules
 cnoreabbrev grep silent grep
 if executable("rg")
     " Use RipGrep if it is installed
-    let rg_wildignore=" --glob !" . substitute(&wildignore, ',', ' --glob !', 'g')
+    let rg_wildignore=' --glob "!' . substitute(&wildignore, ',', '" --glob "!', 'g') . '"'
     " let rg_ignore=" --ignore-file .gitignore --ignore-file .hgignore " . rg_wildignore
-    let rg_ignore=" --no-ignore " . rg_wildignore
+    let rg_ignore=rg_wildignore
     let rg_options=" --no-heading --no-messages --ignore-case"
     let &grepprg="rg --vimgrep" . rg_options . rg_ignore
     set grepformat=%f:%l:%c:%m,%f:%l:%m
@@ -145,12 +145,15 @@ else
 	call plug#begin('$HOME/.vim/plugged')
 endif
 
+Plug 'altercation/vim-colors-solarized'
 Plug 'PProvost/vim-ps1'
 Plug 'chivalry/filemaker.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'dracula/vim'
-Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
-Plug 'junegunn/fzf' " , { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'godlygeek/tabular', { 'on': 'Tabularize', 'for': 'markdown' }
+Plug 'jamessan/vim-gnupg'
+Plug 'jceb/vim-orgmode'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/vader.vim', { 'on': 'Vader', 'for': 'vader' }
@@ -160,9 +163,10 @@ Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 Plug 'romainl/vim-qf'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-abolish'
@@ -170,8 +174,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/utl.vim'
 Plug 'vim-vdebug/vdebug', { 'for': 'php' }
 
 call plug#end()
@@ -255,6 +261,12 @@ nnoremap <leader>g :Goyo<CR>
 cabbrev gc GrammarousCheck
 cabbrev gr GrammarousReset
 " }}}
+" GnuPG:{{{
+let g:GPGPreferArmor=1
+let g:GPGDefaultRecipients=["ejsexton82@gmail.com"]
+vnoremap { :!gpg --decrypt --quiet<Enter>
+vnoremap } :!gpg --armor --encrypt<Enter>
+" }}}
 " INDENT-GUIDES: {{{
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
@@ -263,6 +275,22 @@ let g:indent_guides_guide_size = 1
 " }}}
 " LION: {{{
 let g:lion_squeeze_spaces = 1
+" }}}
+" ORG MODE: {{{
+let g:org_todo_keywords = [['PLAN', 'TODO', '|', 'DONE']]
+" }}}
+" PYTHON: {{{
+
+" Check for Python 2 in some common locations
+if executable('/usr/bin/python2')
+    let g:python_host_prog = '/usr/bin/python2'
+endif
+
+" Check for Python 3 in some common locations
+if executable('/usr/local/bin/python3')
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+
 " }}}
 " QF: {{{
 let g:qf_auto_quit = 0
@@ -325,9 +353,59 @@ nmap <F8> :TagbarToggle<CR>
 " THEME: {{{
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
+
 if has('win32') && has('nvim')
     " For some reason, colorscheme switches to default after init.vim on
     " Windows. Using autocmd solves this problem.
     autocmd VimEnter * colorscheme conemu
+elseif has('mac')
+    autocmd VimEnter * colorscheme solarized
+endif
+" }}}
+" UTL: {{{
+if !exists("g:utl_cfg_hdl_scm_http_system")
+
+    if has("win32")
+        let g:utl_cfg_hdl_scm_http_system = 'silent !cmd /q /c start "dummy title" "%u"'
+        "let g:utl_cfg_hdl_scm_http_system = 'silent !start C:\Program Files\Internet Explorer\iexplore.exe %u#%f' 
+        "let g:utl_cfg_hdl_scm_http_system = 'silent !start C:\Program Files\Mozilla Firefox\firefox.exe %u#%f'
+    elseif has("mac")
+        "let g:utl_cfg_hdl_scm_http_system = "silent !open -a /Applications/Firefox.app/Contents/MacOS/firefox-bin '%u'"
+        let g:utl_cfg_hdl_scm_http_system = 'silent !open -a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "%u"'
+    elseif has("unix")
+        " TODO: Standard Handler for Unixes that can be shipped
+        "	    preconfigured with next utl.vim release
+        "	    Probably to distinguish different Unix/Linux flavors.
+        "
+        "	    Proposed for Ubuntu/Debian by Jeremy Cantrell
+        "	    to use xdg-open program
+        "	    'silent !xdg-open %u'  <- does this work?
+        "
+        " 2nd best solution: explicitly configured browser:
+        "
+        "	Konqueror
+        "let g:utl_cfg_hdl_scm_http_system = "silent !konqueror '%u#%f' &"
+        "
+        "	Lynx Browser.
+        "let g:utl_cfg_hdl_scm_http_system = "!xterm -e lynx '%u#%f'"
+        "
+        "	Firefox
+        "	Check if an instance is already running, and if yes use it, else start firefox.
+        "	See <URL:http://www.mozilla.org/unix/remote.html> for mozilla/firefox -remote control
+        "let g:utl_cfg_hdl_scm_http_system = "silent !firefox -remote 'ping()' && firefox -remote 'openURL( %u )' || firefox '%u#%f' &"
+        let g:utl_cfg_hdl_scm_http_system = "silent !google-chrome '%u'"
+    endif
+    " else if MacOS
+    " ??
+    "let g:utl_cfg_hdl_scm_http_system = "silent !open -a Safari '%u#%f'"
+    "
+    "}
+
+endif
+
+if !exists("g:utl_cfg_hdl_scm_http")
+    if exists("g:utl_cfg_hdl_scm_http_system")
+        let g:utl_cfg_hdl_scm_http=g:utl_cfg_hdl_scm_http_system
+    endif
 endif
 " }}}
