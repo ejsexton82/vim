@@ -354,13 +354,13 @@ nmap <F8> :TagbarToggle<CR>
 set fillchars=vert:│
 highlight VertSplit term=NONE cterm=NONE gui=NONE
 
-if has('win32') && has('nvim')
+" if has('win32') && has('nvim')
     " For some reason, colorscheme switches to default after init.vim on
     " Windows. Using autocmd solves this problem.
-    autocmd VimEnter * colorscheme conemu
-elseif has('mac')
-    autocmd VimEnter * colorscheme solarized
-endif
+    " autocmd VimEnter * colorscheme conemu
+" elseif has('mac')
+    " autocmd VimEnter * colorscheme solarized
+" endif
 " }}}
 " UTL: {{{
 if !exists("g:utl_cfg_hdl_scm_http_system")
